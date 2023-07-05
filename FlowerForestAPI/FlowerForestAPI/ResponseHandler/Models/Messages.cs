@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FlowerForestAPI.ResponseHandler.Models
+{
+    public enum Messages
+    {
+        SUCCESS_GET_RETRIEVED,
+        SUCCESS_POST_CREATED,
+        SUCCESS_PUT_UPDATED,
+        SUCCESS_DELETE_DELETED,
+        INFORMATION_GET_NOTFOUND,
+        INFORMATION_PUT_NOTFOUND,
+        INFORMATION_DELETE_NOTFOUND,
+        ERROR_GET_INTERNAL,
+        ERROR_GET_INVALIDREQUEST,
+        ERROR_POST_INTERNAL,
+        ERROR_POST_INVALIDREQUEST,
+        ERROR_PUT_INTERNAL,
+        ERROR_PUT_INVALIDREQUEST,
+        ERROR_DELETE_INTERNAL,
+        ERROR_DELETE_INVALIDREQUEST
+    }
+}

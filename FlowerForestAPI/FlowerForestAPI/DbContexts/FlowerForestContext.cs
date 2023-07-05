@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using FlowerForestAPI.Models;
 
-namespace FlowerForestAPI.Models
+namespace FlowerForestAPI.DbContexts
 {
     public class FlowerForestContext : DbContext
     {
@@ -10,5 +11,7 @@ namespace FlowerForestAPI.Models
         }
 
         public DbSet<Plant> Plants { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<CataloguedPlant> CataloguedPlants { get; set; }
     }
 }

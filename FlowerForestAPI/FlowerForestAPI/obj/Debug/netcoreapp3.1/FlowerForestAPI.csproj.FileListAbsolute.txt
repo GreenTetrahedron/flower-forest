@@ -61,3 +61,8 @@ C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerFor
 C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

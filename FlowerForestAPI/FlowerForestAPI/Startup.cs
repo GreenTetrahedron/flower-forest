@@ -12,6 +12,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FlowerForestAPI.Models;
+using FlowerForestAPI.DbContexts;
+using FlowerForestAPI.ResponseHandler;
+using FlowerForestAPI.Repositories.CataloguedPlantRepositories;
+using FlowerForestAPI.Repositories.PlantRepositories;
+using FlowerForestAPI.Repositories.UserRepositories;
 
 namespace FlowerForestAPI
 {
@@ -29,6 +34,13 @@ namespace FlowerForestAPI
         {
             services.AddDbContext<FlowerForestContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FlowerForestDBConnectionString")));
+
+            services.AddScoped<IResponseHandler, ResponseHandler.ResponseHandler>();
+
+            services.AddScoped<ICataloguedPlantRepository, CataloguedPlantRepository>();
+            services.AddScoped<IPlantRepository, PlantRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddControllers();
         }
 
