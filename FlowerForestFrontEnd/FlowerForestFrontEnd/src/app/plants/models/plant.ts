@@ -1,8 +1,8 @@
-interface Plant {
+export interface Plant {
     id: string;
+    commonName: string;
     genus: string;
     species: string;
-    customName: string | undefined;
     maxHeight_metres: number;
     photoUrl: string;
 }

@@ -22,6 +22,8 @@ namespace FlowerForestAPI
 {
     public class Startup
     {
+        private readonly string _policyName = "policyName";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,6 +34,15 @@ namespace FlowerForestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opt => {
+                opt.AddPolicy(name: _policyName, builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             services.AddDbContext<FlowerForestContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FlowerForestDBConnectionString")));
 
@@ -55,6 +66,8 @@ namespace FlowerForestAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(_policyName);
 
             app.UseAuthorization();
 

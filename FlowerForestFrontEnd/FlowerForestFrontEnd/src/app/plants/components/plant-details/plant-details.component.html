@@ -1,0 +1,15 @@
+<div *ngIf="plant !== undefined">
+    <button (click)="goBack()">Go back</button>
+    <img src="{{plant.photoUrl}}" />
+
+    <div>
+        <h1 *ngIf="plant.commonName != null">{{plant.commonName}}</h1>
+        <h2>{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</h2>
+        <div>
+            <span>Maximum Height (metres): </span><span>{{plant.maxHeight_metres}}</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="plant === undefined">
+    Plant not found
+</div>
