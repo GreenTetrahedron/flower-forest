@@ -12,6 +12,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
     {
         Response GetUsers();
         Response GetUserById(Guid id);
+        Response AuthenticateUser(string username, string password);
         Response AddUser(User user);
         Response UpdateUser(User user);
         Response DeleteUser(User user);

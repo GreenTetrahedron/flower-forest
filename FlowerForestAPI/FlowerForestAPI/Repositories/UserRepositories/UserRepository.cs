@@ -42,6 +42,17 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             return responseHandler.CreateResponse(message, user);
         }
 
+        public Response AuthenticateUser(string username, string password)
+        {
+            var user = flowerForestContext.Users
+                .SingleOrDefault(u => u.Username == username && u.Password == password);
+
+            var message = user != null ?
+                Messages.SUCCESS_AUTHENTICATION_VALIDCREDENTIALS : Messages.INFORMATION_AUTHENTICATION_INVALIDCREDENTIALS;
+
+            return responseHandler.CreateResponse(message, user);
+        }
+
         public Response GetUsers()
         {
             var users = flowerForestContext.Users.ToList();

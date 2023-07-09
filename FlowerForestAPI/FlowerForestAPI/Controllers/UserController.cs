@@ -14,42 +14,49 @@ namespace FlowerForestAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository plantRepository;
+        private readonly IUserRepository userRepository;
 
-        public UserController(IUserRepository plantRepository)
+        public UserController(IUserRepository userRepository)
         {
-            this.plantRepository = plantRepository;
+            this.userRepository = userRepository;
         }
 
         [HttpGet]
         public IActionResult GetUsers()
         {
-            return Ok(plantRepository.GetUsers());
+            return Ok(userRepository.GetUsers());
         }
 
         [Route("{id}")]
         [HttpGet]
         public IActionResult GetUserById(Guid id)
         {
-            return Ok(plantRepository.GetUserById(id));
+            return Ok(userRepository.GetUserById(id));
+        }
+
+        [Route("Authenticate/{username}")]
+        [HttpGet]
+        public IActionResult AuthenticateUser([FromRoute] string username, [FromBody] string password)
+        {
+            return Ok(userRepository.AuthenticateUser(username, password));
         }
 
         [HttpPost]
-        public IActionResult AddUser(User plant)
+        public IActionResult AddUser(User user)
         {
-            return Ok(plantRepository.AddUser(plant));
+            return Ok(userRepository.AddUser(user));
         }
 
         [HttpPut]
-        public IActionResult UpdateUser(User plant)
+        public IActionResult UpdateUser(User user)
         {
-            return Ok(plantRepository.UpdateUser(plant));
+            return Ok(userRepository.UpdateUser(user));
         }
 
         [HttpDelete]
-        public IActionResult DeleteUser(User plant)
+        public IActionResult DeleteUser(User user)
         {
-            return Ok(plantRepository.DeleteUser(plant));
+            return Ok(userRepository.DeleteUser(user));
         }
     }
 }
