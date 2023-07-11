@@ -1,0 +1,7 @@
+<nav>
+    <ul>
+        <li *ngFor="let route of routes">
+            <a routerLink="{{route.routerLink}}">{{route.name | titlecase}}</a>
+        </li>
+    </ul>
+</nav>
