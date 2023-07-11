@@ -36,7 +36,7 @@ namespace FlowerForestAPI.Controllers
 
         [Route("Authenticate/{username}")]
         [HttpGet]
-        public IActionResult AuthenticateUser([FromRoute] string username, [FromBody] string password)
+        public IActionResult AuthenticateUser([FromRoute] string username, [FromForm] string password)
         {
             return Ok(userRepository.AuthenticateUser(username, password));
         }

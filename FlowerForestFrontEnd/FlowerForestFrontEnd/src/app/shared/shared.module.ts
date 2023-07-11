@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from './routing/app-routing.module';
-import { BackButtonComponent } from './back-button/back-button.component';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 
 
@@ -13,7 +12,6 @@ import { BackButtonComponent } from './back-button/back-button.component';
     CommonModule
   ],
   exports: [
-    AppRoutingModule,
     BackButtonComponent
   ]
 })

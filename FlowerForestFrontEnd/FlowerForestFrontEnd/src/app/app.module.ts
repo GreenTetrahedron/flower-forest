@@ -1,11 +1,16 @@
+import { HeaderModule } from './header/header.module';
 import { PlantsModule } from './plants/plants.module';
+
+import { AppRoutingModule } from './routing/app-routing.module';
+
 import { SharedModule } from './shared/shared.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './shared/routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,9 @@ import { AppRoutingModule } from './shared/routing/app-routing.module';
     BrowserModule,
     PlantsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

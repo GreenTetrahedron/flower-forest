@@ -1,19 +1,20 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { MessageResponse } from 'src/app/shared/models/response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlantService {
-  httpOptions = {
+  private readonly requestPath: string = "https://localhost:44375/api/Plant/";
+
+  private readonly httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
-
-  private readonly requestPath: string = "https://localhost:44375/api/Plant/";
 
   constructor(private http: HttpClient) { }
 
