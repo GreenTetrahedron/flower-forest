@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -9,10 +9,13 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./authenticate-user.component.css']
 })
 export class AuthenticateUserComponent {
-  username = new FormControl("");
-  password = new FormControl("");
 
-  authenticate() {
+  authenticationForm: FormGroup = new FormGroup ({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  submit() {
     
   }
 }
