@@ -21,10 +21,6 @@ import { AuthenticateUserComponent } from './components/authenticate-user/authen
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule
-  ],
-  exports: [
-    AuthenticateUserComponent,
-    AddUserComponent
   ]
 })
 export class UserModule { }
