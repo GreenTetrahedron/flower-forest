@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nfWjPH5/fKPjeiwAzmZfav10rh/dkg56LgFU1XvXGIiNwi4FbM+j0lbcG3Ab4AGz4pHHUAa3hGzAmN1sNRO6AQ==",
+  "dgSpecHash": "wRXQprzimlmH40ed6CfPfD9Iy7n7NUX9i7neNHmeESOWjNel/3xdOAnNAKbsMWGmziPlgd+5nZmFwIJs3F3gDQ==",
   "success": true,
   "projectFilePath": "C:\\__Kabushak\\_Programming\\_Applications\\Web Applications\\FlowerForest\\FlowerForestAPI\\FlowerForestAPI\\FlowerForestAPI.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
     "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.9\\microsoft.aspnet.webapi.core.5.2.9.nupkg.sha512",
     "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.aspnet.webapi.cors\\5.2.9\\microsoft.aspnet.webapi.cors.5.2.9.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.32\\microsoft.aspnetcore.authentication.jwtbearer.3.1.32.nupkg.sha512",
     "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

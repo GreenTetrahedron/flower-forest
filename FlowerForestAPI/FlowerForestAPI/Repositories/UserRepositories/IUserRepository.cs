@@ -1,5 +1,5 @@
 ﻿using FlowerForestAPI.Models;
-using FlowerForestAPI.ResponseHandler.Models;
+using FlowerForestAPI.ResponseHandlers.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
     {
         Response GetUsers();
         Response GetUserById(Guid id);
-        Response AuthenticateUser(string username, string password);
+        Response AuthenticateUser(UserCredentials credentials);
         Response AddUser(User user);
         Response UpdateUser(User user);
         Response DeleteUser(User user);

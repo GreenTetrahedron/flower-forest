@@ -1,7 +1,8 @@
 ﻿using FlowerForestAPI.DbContexts;
 using FlowerForestAPI.Models;
-using FlowerForestAPI.ResponseHandler;
-using FlowerForestAPI.ResponseHandler.Models;
+using FlowerForestAPI.ResponseHandlers;
+using FlowerForestAPI.ResponseHandlers.Models;
+using FlowerForestAPI.TokenHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,18 @@ namespace FlowerForestAPI.Repositories.UserRepositories
     public class UserRepository : IUserRepository
     {
         private readonly FlowerForestContext flowerForestContext;
+        
         private readonly IResponseHandler responseHandler;
+        private readonly ITokenHandler tokenHandler;
 
-        public UserRepository(FlowerForestContext flowerForestContext, IResponseHandler responseHandler)
+        public UserRepository(FlowerForestContext flowerForestContext,
+            IResponseHandler responseHandler,
+            ITokenHandler tokenHandler)
         {
             this.flowerForestContext = flowerForestContext;
+            
             this.responseHandler = responseHandler;
+            this.tokenHandler = tokenHandler;
         }
 
         public Response DeleteUser(User user)
@@ -42,15 +49,26 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             return responseHandler.CreateResponse(message, user);
         }
 
-        public Response AuthenticateUser(string username, string password)
+        public Response AuthenticateUser(UserCredentials credentials)
         {
             var user = flowerForestContext.Users
-                .SingleOrDefault(u => u.Username == username && u.Password == password);
+                .SingleOrDefault(u => u.Username == credentials.Username && u.Password == credentials.Password);
 
-            var message = user != null ?
-                Messages.SUCCESS_AUTHENTICATION_VALIDCREDENTIALS : Messages.INFORMATION_AUTHENTICATION_INVALIDCREDENTIALS;
+            var message = Messages.INFORMATION_AUTHENTICATION_INVALIDCREDENTIALS;
+            var userWithToken = new UserWithToken();
 
-            return responseHandler.CreateResponse(message, user);
+            if (user != null)
+            {
+                message = Messages.SUCCESS_AUTHENTICATION_VALIDCREDENTIALS;
+                
+                userWithToken = new UserWithToken()
+                {
+                    User = user,
+                    Token = tokenHandler.GenerateToken(user)
+                };
+            }
+
+            return responseHandler.CreateResponse(message, userWithToken);
         }
 
         public Response GetUsers()

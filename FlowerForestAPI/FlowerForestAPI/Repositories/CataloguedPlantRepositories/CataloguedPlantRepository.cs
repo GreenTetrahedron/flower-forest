@@ -1,7 +1,7 @@
 ﻿using FlowerForestAPI.DbContexts;
 using FlowerForestAPI.Models;
-using FlowerForestAPI.ResponseHandler;
-using FlowerForestAPI.ResponseHandler.Models;
+using FlowerForestAPI.ResponseHandlers;
+using FlowerForestAPI.ResponseHandlers.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

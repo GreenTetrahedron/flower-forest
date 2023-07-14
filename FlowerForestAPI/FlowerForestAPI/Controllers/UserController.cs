@@ -1,6 +1,7 @@
 ﻿using FlowerForestAPI.DbContexts;
 using FlowerForestAPI.Models;
 using FlowerForestAPI.Repositories.UserRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,16 +30,18 @@ namespace FlowerForestAPI.Controllers
 
         [Route("{id}")]
         [HttpGet]
+        [Authorize]
         public IActionResult GetUserById(Guid id)
         {
             return Ok(userRepository.GetUserById(id));
         }
 
-        [Route("Authenticate/{username}")]
-        [HttpGet]
-        public IActionResult AuthenticateUser([FromRoute] string username, [FromForm] string password)
+        [Route("Authenticate")]
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult AuthenticateUser([FromBody] UserCredentials credentials)
         {
-            return Ok(userRepository.AuthenticateUser(username, password));
+            return Ok(userRepository.AuthenticateUser(credentials));
         }
 
         [HttpPost]

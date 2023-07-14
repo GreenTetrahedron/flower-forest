@@ -68,3 +68,4 @@ C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerFor
 C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
 C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestAPI\FlowerForestAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

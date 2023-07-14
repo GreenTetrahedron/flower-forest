@@ -13,10 +13,14 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FlowerForestAPI.Models;
 using FlowerForestAPI.DbContexts;
-using FlowerForestAPI.ResponseHandler;
+using FlowerForestAPI.ResponseHandlers;
 using FlowerForestAPI.Repositories.CataloguedPlantRepositories;
 using FlowerForestAPI.Repositories.PlantRepositories;
 using FlowerForestAPI.Repositories.UserRepositories;
+using FlowerForestAPI.TokenHandlers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace FlowerForestAPI
 {
@@ -43,10 +47,24 @@ namespace FlowerForestAPI
                 });
             });
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer( options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = Configuration["JWTConfiguration:Issuer"],
+                        ValidateAudience = false,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWTConfiguration:Secret"]))
+                    };
+                });
+
             services.AddDbContext<FlowerForestContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FlowerForestDBConnectionString")));
 
-            services.AddScoped<IResponseHandler, ResponseHandler.ResponseHandler>();
+            services.AddScoped<IResponseHandler, ResponseHandler>();
+            services.AddScoped<ITokenHandler, JWTTokenHandler>();
 
             services.AddScoped<ICataloguedPlantRepository, CataloguedPlantRepository>();
             services.AddScoped<IPlantRepository, PlantRepository>();
@@ -68,6 +86,8 @@ namespace FlowerForestAPI
             app.UseRouting();
 
             app.UseCors(_policyName);
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
