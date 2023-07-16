@@ -23,6 +23,9 @@ namespace FlowerForestAPI.Repositories.CataloguedPlantRepositories
 
         private static CataloguedPlantDTO CataloguedPlantToCataloguedPlantDTO(CataloguedPlant plant)
         {
+            if (plant == null)
+                return null;
+
             return new CataloguedPlantDTO
             {
                 Id = plant.Id,

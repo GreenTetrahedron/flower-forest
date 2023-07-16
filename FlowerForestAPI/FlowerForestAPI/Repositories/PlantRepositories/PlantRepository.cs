@@ -22,6 +22,9 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
 
         private static PlantDTO PlantToPlantDTO(Plant plant)
         {
+            if (plant == null)
+                return null;
+
             return new PlantDTO
             {
                 Id = plant.Id,

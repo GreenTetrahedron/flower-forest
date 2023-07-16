@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AuthenticateUserComponent } from '../user/components/authenticate-user/authenticate-user.component';
+import { UserDetailsComponent } from '../user/components/user-details/user-details.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: "", redirectTo: "/plants", pathMatch: "full" },
   { path: "plants", component: PlantListComponent },
   { path: "plant/:id", component: PlantDetailsComponent },
-  { path: "sign-in", component: AuthenticateUserComponent }
+  { path: "sign-in", component: AuthenticateUserComponent },
+  { path: "user/details/:id", component: UserDetailsComponent }
 ];
 
 @NgModule({

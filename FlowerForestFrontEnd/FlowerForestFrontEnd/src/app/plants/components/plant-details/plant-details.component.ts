@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 
 import { Component, Input, OnInit } from '@angular/core';
 import { Plant } from '../../models/plant';

@@ -30,6 +30,9 @@ namespace FlowerForestAPI.Repositories.UserRepositories
 
         private static UserDTO UserToUserDTO(User user)
         {
+            if (user == null)
+                return null;
+
             return new UserDTO
             {
                 Id = user.Id,
