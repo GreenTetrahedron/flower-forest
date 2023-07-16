@@ -1,4 +1,5 @@
-﻿using FlowerForestAPI.Models;
+﻿using FlowerForestAPI.DTOs;
+using FlowerForestAPI.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -24,7 +25,7 @@ namespace FlowerForestAPI.TokenHandlers
             issuer = configuration["JWTConfiguration:Issuer"];
         }
 
-        public string GenerateToken(User user)
+        public string GenerateToken(UserDTO user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);

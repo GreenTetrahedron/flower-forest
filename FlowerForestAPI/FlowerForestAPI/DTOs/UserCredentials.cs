@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlowerForestAPI.Models
+namespace FlowerForestAPI.DTOs
 {
     public class UserCredentials
     {

@@ -1,4 +1,5 @@
-﻿using FlowerForestAPI.Models;
+﻿using FlowerForestAPI.DTOs;
+using FlowerForestAPI.Models;
 using FlowerForestAPI.ResponseHandlers.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,5 +17,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
         Response AddUser(User user);
         Response UpdateUser(User user);
         Response DeleteUser(User user);
+
+        Response DeleteUserById(Guid id);
     }
 }

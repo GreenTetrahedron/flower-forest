@@ -1,4 +1,5 @@
 ﻿using FlowerForestAPI.DbContexts;
+using FlowerForestAPI.DTOs;
 using FlowerForestAPI.Models;
 using FlowerForestAPI.ResponseHandlers;
 using FlowerForestAPI.ResponseHandlers.Models;
@@ -27,6 +28,15 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             this.tokenHandler = tokenHandler;
         }
 
+        private UserDTO UserToUserDTO(User user)
+        {
+            return new UserDTO
+            {
+                Id = user.Id,
+                Username = user.Username
+            };
+        }
+
         public Response DeleteUser(User user)
         {
             flowerForestContext.Users.Remove(user);
@@ -38,42 +48,68 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             return responseHandler.CreateResponse(message, result);
         }
 
-        public Response GetUserById(Guid id)
+        public Response DeleteUserById(Guid id)
         {
             var user = flowerForestContext.Users
                 .SingleOrDefault(u => u.Id == id);
+            flowerForestContext.Users.Remove(user);
 
-            var message = user != null ?
-                Messages.SUCCESS_GET_RETRIEVED : Messages.INFORMATION_GET_NOTFOUND;
+            var result = flowerForestContext.SaveChanges();
 
-            return responseHandler.CreateResponse(message, user);
+            var message = result == 0 ?
+                Messages.INFORMATION_DELETE_NOTFOUND : Messages.SUCCESS_DELETE_DELETED;
+
+            return responseHandler.CreateResponse(message, result);
+        }
+
+        public Response GetUserById(Guid id)
+        {
+            var result = flowerForestContext.Users
+                .SingleOrDefault(u => u.Id == id);
+
+            var message = Messages.INFORMATION_GET_NOTFOUND;
+
+            UserDTO? responseData = null;
+
+            if (result != null)
+            {
+                message = Messages.SUCCESS_GET_RETRIEVED;
+
+                responseData = UserToUserDTO(result);
+            }
+
+            return responseHandler.CreateResponse(message, responseData);
         }
 
         public Response AuthenticateUser(UserCredentials credentials)
         {
-            var user = flowerForestContext.Users
+            var resultUser = flowerForestContext.Users
                 .SingleOrDefault(u => u.Username == credentials.Username && u.Password == credentials.Password);
 
             var message = Messages.INFORMATION_AUTHENTICATION_INVALIDCREDENTIALS;
-            var userWithToken = new UserWithToken();
+            var responseData = new UserDTOWithToken();
 
-            if (user != null)
+            if (resultUser != null)
             {
                 message = Messages.SUCCESS_AUTHENTICATION_VALIDCREDENTIALS;
-                
-                userWithToken = new UserWithToken()
+
+                var responseUser = UserToUserDTO(resultUser);
+
+                responseData = new UserDTOWithToken
                 {
-                    User = user,
-                    Token = tokenHandler.GenerateToken(user)
+                    User = responseUser,
+                    Token = tokenHandler.GenerateToken(responseUser)
                 };
             }
 
-            return responseHandler.CreateResponse(message, userWithToken);
+            return responseHandler.CreateResponse(message, responseData);
         }
 
         public Response GetUsers()
         {
-            var users = flowerForestContext.Users.ToList();
+            var users = flowerForestContext.Users
+                .Select(u => UserToUserDTO(u))
+                .ToList();
 
             var message = users.Count() > 0 ?
                 Messages.SUCCESS_GET_RETRIEVED : Messages.INFORMATION_GET_NOTFOUND;

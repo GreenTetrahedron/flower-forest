@@ -16,10 +16,16 @@ export class UserService {
     })
   };
 
+  private token?: string = undefined;
+
   constructor(private http: HttpClient) { }
   
   authenticateUser(username: string, password: string): Observable<MessageResponse>{
-    return this.http.post<MessageResponse>(this.requestPath, { "username": username, "password": password }, this.httpOptions);
+    var response = this.http.post<MessageResponse>(this.requestPath, { "username": username, "password": password }, this.httpOptions);
+    response
+      .subscribe(r => this.token = (r.data as UserDTOWithToken).token);
+
+    return response;
   }
 
 }

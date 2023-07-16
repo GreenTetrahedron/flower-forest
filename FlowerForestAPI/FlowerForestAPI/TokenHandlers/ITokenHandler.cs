@@ -1,4 +1,5 @@
-﻿using FlowerForestAPI.Models;
+﻿using FlowerForestAPI.DTOs;
+using FlowerForestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace FlowerForestAPI.TokenHandlers
 {
     public interface ITokenHandler
     {
-        string GenerateToken(User user);
+        string GenerateToken(UserDTO user);
     }
 }

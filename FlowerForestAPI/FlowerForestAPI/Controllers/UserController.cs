@@ -1,4 +1,5 @@
 ﻿using FlowerForestAPI.DbContexts;
+using FlowerForestAPI.DTOs;
 using FlowerForestAPI.Models;
 using FlowerForestAPI.Repositories.UserRepositories;
 using Microsoft.AspNetCore.Authorization;
@@ -60,6 +61,13 @@ namespace FlowerForestAPI.Controllers
         public IActionResult DeleteUser(User user)
         {
             return Ok(userRepository.DeleteUser(user));
+        }
+
+        [Route("{id}")]
+        [HttpDelete]
+        public IActionResult DeleteUserById(Guid id)
+        {
+            return Ok(userRepository.DeleteUserById(id));
         }
     }
 }
