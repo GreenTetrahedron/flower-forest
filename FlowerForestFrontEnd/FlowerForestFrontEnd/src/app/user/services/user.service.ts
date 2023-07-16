@@ -19,13 +19,19 @@ export class UserService {
   private token?: string = undefined;
 
   constructor(private http: HttpClient) { }
-  
-  authenticateUser(username: string, password: string): Observable<MessageResponse>{
+
+  authenticateUser(username: string, password: string): Observable<MessageResponse> {
     var response = this.http.post<MessageResponse>(this.requestPath, { "username": username, "password": password }, this.httpOptions);
     response
-      .subscribe(r => this.token = (r.data as UserDTOWithToken).token);
+      .subscribe(r => {
+        this.token = (r.data as UserDTOWithToken).token;
+        this.httpOptions.headers.append("Authorization", `Bearer ${this.token}`)
+      });
 
     return response;
   }
 
+  getUserDetails(id: string): Observable<MessageResponse> {
+    this.http.post<MessageResponse>(this.requestPath)
+  }
 }

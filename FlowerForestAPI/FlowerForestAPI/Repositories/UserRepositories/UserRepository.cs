@@ -28,7 +28,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             this.tokenHandler = tokenHandler;
         }
 
-        private UserDTO UserToUserDTO(User user)
+        private static UserDTO UserToUserDTO(User user)
         {
             return new UserDTO
             {

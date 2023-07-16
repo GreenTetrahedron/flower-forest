@@ -20,7 +20,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             this.responseHandler = responseHandler;
         }
 
-        private PlantDTO PlantToPlantDTO(Plant plant)
+        private static PlantDTO PlantToPlantDTO(Plant plant)
         {
             return new PlantDTO
             {
