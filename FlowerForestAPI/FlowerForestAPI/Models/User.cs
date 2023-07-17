@@ -19,6 +19,6 @@ namespace FlowerForestAPI.Models
         [Required]
         public string Password { get; set; }
 
-        public ICollection<CataloguedPlant> Catalogue { get; set; }
+        public ICollection<Catalogue> Catalogues { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace FlowerForestAPI.Repositories.CataloguedPlantRepositories
             this.responseHandler = responseHandler;
         }
 
-        private static CataloguedPlantDTO CataloguedPlantToCataloguedPlantDTO(CataloguedPlant plant)
+        private static CataloguedPlantDTO CataloguedPlantToCataloguedPlantDTO(Catalogue plant)
         {
             if (plant == null)
                 return null;
@@ -37,7 +37,7 @@ namespace FlowerForestAPI.Repositories.CataloguedPlantRepositories
             };
         }
 
-        public Response DeleteCataloguedPlant(CataloguedPlant plant)
+        public Response DeleteCataloguedPlant(Catalogue plant)
         {
             flowerForestContext.CataloguedPlants.Remove(plant);
             var result = flowerForestContext.SaveChanges();
@@ -83,7 +83,7 @@ namespace FlowerForestAPI.Repositories.CataloguedPlantRepositories
             return responseHandler.CreateResponse(message, plants);
         }
 
-        public Response AddCataloguedPlant(CataloguedPlant plant)
+        public Response AddCataloguedPlant(Catalogue plant)
         {
             flowerForestContext.CataloguedPlants.Add(plant);
             var result = flowerForestContext.SaveChanges();
@@ -94,7 +94,7 @@ namespace FlowerForestAPI.Repositories.CataloguedPlantRepositories
             return responseHandler.CreateResponse(message, result);
         }
 
-        public Response UpdateCataloguedPlant(CataloguedPlant plant)
+        public Response UpdateCataloguedPlant(Catalogue plant)
         {
             flowerForestContext.CataloguedPlants.Update(plant);
             var result = flowerForestContext.SaveChanges();

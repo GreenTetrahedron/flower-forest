@@ -7,21 +7,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlowerForestAPI.Models
 {
-    public class CataloguedPlant
+    public class Catalogue
     {
         [Key]
         public Guid Id { get; set; }
 
-        public string Genus { get; set; }
+        public string Name { get; set; }
 
-        public string Species { get; set; }
+        public bool IsPublic { get; set; }
 
-        public double MaxHeight_metres { get; set; }
+        public ICollection<Plant> plants { get; set; }
 
-        public string? CommonName { get; set; }
-
-        public string PhotoUrl { get; set; }
-      
 
         public Guid UserId { get; set; }
 

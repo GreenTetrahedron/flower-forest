@@ -19,7 +19,7 @@ namespace FlowerForestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCataloguedPlant([FromBody] CataloguedPlant plant)
+        public IActionResult CreateCataloguedPlant([FromBody] Catalogue plant)
         {
             return Ok(cataloguedPlantRepository.AddCataloguedPlant(plant));
         }
@@ -45,13 +45,13 @@ namespace FlowerForestAPI.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateCataloguedPlant([FromBody] CataloguedPlant plant)
+        public IActionResult UpdateCataloguedPlant([FromBody] Catalogue plant)
         {
             return Ok(cataloguedPlantRepository.UpdateCataloguedPlant(plant));
         }
 
         [HttpDelete]
-        public IActionResult DeleteCataloguedPlant([FromBody] CataloguedPlant plant)
+        public IActionResult DeleteCataloguedPlant([FromBody] Catalogue plant)
         {
             return Ok(cataloguedPlantRepository.DeleteCataloguedPlant(plant));
         }

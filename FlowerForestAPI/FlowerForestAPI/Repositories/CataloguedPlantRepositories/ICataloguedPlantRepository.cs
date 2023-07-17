@@ -12,8 +12,8 @@ namespace FlowerForestAPI.Repositories.CataloguedPlantRepositories
         Response GetCataloguedPlantsByUserId(Guid userId);
         Response GetCataloguedPlantById(Guid id);
         Response GetCataloguedPlants();
-        Response AddCataloguedPlant(CataloguedPlant plant);
-        Response UpdateCataloguedPlant(CataloguedPlant plant);
-        Response DeleteCataloguedPlant(CataloguedPlant plant);
+        Response AddCataloguedPlant(Catalogue plant);
+        Response UpdateCataloguedPlant(Catalogue plant);
+        Response DeleteCataloguedPlant(Catalogue plant);
     }
 }
