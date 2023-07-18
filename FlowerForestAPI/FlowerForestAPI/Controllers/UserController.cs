@@ -1,4 +1,5 @@
-﻿using FlowerForestAPI.DbContexts;
+﻿using FlowerForestAPI.AuthorizeUserServices;
+using FlowerForestAPI.DbContexts;
 using FlowerForestAPI.DTOs;
 using FlowerForestAPI.Models;
 using FlowerForestAPI.Repositories.UserRepositories;
@@ -17,14 +18,15 @@ namespace FlowerForestAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository userRepository;
-        private readonly IAuthorizationService authorizationService;
+        private readonly IAuthorizeUserService authorizeUserService;
 
         public UserController(IUserRepository userRepository,
-            IAuthorizationService authorizationService)
+            IAuthorizeUserService authorizeUserService)
         {
             this.userRepository = userRepository;
-            this.authorizationService = authorizationService;
+            this.authorizeUserService = authorizeUserService;
         }
+
 
         [HttpGet]
         public IActionResult GetUsers()
@@ -39,7 +41,7 @@ namespace FlowerForestAPI.Controllers
         {
             var user = userRepository.GetUserById(id);
 
-            var authorizationResult = await authorizationService.AuthorizeAsync(User, new User() { Id = ((UserDTO)(user.Data)).Id }, "CreatorOnlyPolicy");
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, ((UserDTO)(user.Data)).Id);
 
             if (authorizationResult.Succeeded)
             {

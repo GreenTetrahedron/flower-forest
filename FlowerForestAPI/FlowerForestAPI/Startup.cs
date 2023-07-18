@@ -24,6 +24,7 @@ using System.Text;
 using FlowerForestAPI.Requirements;
 using FlowerForestAPI.Requirements.SameUserAuthorizationHandler;
 using Microsoft.AspNetCore.Authorization;
+using FlowerForestAPI.AuthorizeUserServices;
 
 namespace FlowerForestAPI
 {
@@ -75,6 +76,7 @@ namespace FlowerForestAPI
                 options.UseSqlServer(Configuration.GetConnectionString("FlowerForestDBConnectionString")));
 
             services.AddScoped<IResponseService, ResponseService>();
+            services.AddScoped<IAuthorizeUserService, AuthorizeUserService>();
             services.AddScoped<ITokenService, JWTTokenService>();
 
             services.AddScoped<ICatalogueRepository, CatalogueRepository>();
