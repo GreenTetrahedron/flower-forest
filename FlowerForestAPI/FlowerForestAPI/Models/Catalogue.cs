@@ -16,7 +16,7 @@ namespace FlowerForestAPI.Models
 
         public bool IsPublic { get; set; }
 
-        public ICollection<Plant> plants { get; set; }
+        public ICollection<Plant> Plants { get; set; }
 
 
         public Guid UserId { get; set; }

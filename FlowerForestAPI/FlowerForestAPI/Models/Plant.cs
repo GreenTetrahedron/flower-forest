@@ -25,6 +25,6 @@ namespace FlowerForestAPI.Models
 
         public Guid CatalogueId { get; set; }
 
-        public Catalogue catalogue { get; set; }
+        public Catalogue Catalogue { get; set; }
     }
 }

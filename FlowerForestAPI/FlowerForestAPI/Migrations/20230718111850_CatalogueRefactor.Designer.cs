@@ -4,14 +4,16 @@ using FlowerForestAPI.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FlowerForestAPI.Migrations
 {
     [DbContext(typeof(FlowerForestContext))]
-    partial class FlowerForestContextModelSnapshot : ModelSnapshot
+    [Migration("20230718111850_CatalogueRefactor")]
+    partial class CatalogueRefactor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
