@@ -1,8 +1,8 @@
 ﻿using FlowerForestAPI.DbContexts;
 using FlowerForestAPI.DTOs;
 using FlowerForestAPI.Models;
-using FlowerForestAPI.ResponseHandlers;
-using FlowerForestAPI.ResponseHandlers.Models;
+using FlowerForestAPI.ResponseServices;
+using FlowerForestAPI.ResponseServices.Models;
 using System;
 using System.Linq;
 
@@ -12,12 +12,12 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
     {
         private readonly FlowerForestContext flowerForestContext;
 
-        private readonly IResponseHandler responseHandler;
+        private readonly IResponseService responseService;
 
-        public PlantRepository(FlowerForestContext flowerForestContext, IResponseHandler responseHandler)
+        public PlantRepository(FlowerForestContext flowerForestContext, IResponseService responseService)
         {
             this.flowerForestContext = flowerForestContext;
-            this.responseHandler = responseHandler;
+            this.responseService = responseService;
         }
 
         private static PlantDTO PlantToPlantDTO(Plant plant)
@@ -44,7 +44,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             var message = result == 0 ?
                 Messages.INFORMATION_DELETE_NOTFOUND : Messages.SUCCESS_DELETE_DELETED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
 
         public Response GetPlantById(Guid id)
@@ -63,7 +63,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
                 responsePlant = PlantToPlantDTO(plant);
             }
 
-            return responseHandler.CreateResponse(message, responsePlant);
+            return responseService.CreateResponse(message, responsePlant);
         }
 
         public Response GetPlants()
@@ -75,7 +75,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             var message = plants.Count() > 0 ?
                 Messages.SUCCESS_GET_RETRIEVED : Messages.INFORMATION_GET_NOTFOUND;
 
-            return responseHandler.CreateResponse(message, plants);
+            return responseService.CreateResponse(message, plants);
         }
 
         public Response AddPlant(Plant plant)
@@ -86,7 +86,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             var message = result == 0 ?
                 Messages.ERROR_POST_INTERNAL : Messages.SUCCESS_POST_CREATED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
 
         public Response UpdatePlant(Plant plant)
@@ -97,7 +97,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             var message = result == 0 ?
                 Messages.INFORMATION_PUT_NOTFOUND : Messages.SUCCESS_PUT_UPDATED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
     }
 }

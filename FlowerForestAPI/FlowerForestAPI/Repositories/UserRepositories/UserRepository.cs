@@ -1,9 +1,9 @@
 ﻿using FlowerForestAPI.DbContexts;
 using FlowerForestAPI.DTOs;
 using FlowerForestAPI.Models;
-using FlowerForestAPI.ResponseHandlers;
-using FlowerForestAPI.ResponseHandlers.Models;
-using FlowerForestAPI.TokenHandlers;
+using FlowerForestAPI.ResponseServices;
+using FlowerForestAPI.ResponseServices.Models;
+using FlowerForestAPI.TokenServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +15,17 @@ namespace FlowerForestAPI.Repositories.UserRepositories
     {
         private readonly FlowerForestContext flowerForestContext;
         
-        private readonly IResponseHandler responseHandler;
-        private readonly ITokenHandler tokenHandler;
+        private readonly IResponseService responseService;
+        private readonly ITokenService tokenService;
 
         public UserRepository(FlowerForestContext flowerForestContext,
-            IResponseHandler responseHandler,
-            ITokenHandler tokenHandler)
+            IResponseService responseService,
+            ITokenService tokenService)
         {
             this.flowerForestContext = flowerForestContext;
             
-            this.responseHandler = responseHandler;
-            this.tokenHandler = tokenHandler;
+            this.responseService = responseService;
+            this.tokenService = tokenService;
         }
 
         private static UserDTO UserToUserDTO(User user)
@@ -48,7 +48,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             var message = result == 0 ?
                 Messages.INFORMATION_DELETE_NOTFOUND : Messages.SUCCESS_DELETE_DELETED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
 
         public Response DeleteUserById(Guid id)
@@ -62,7 +62,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             var message = result == 0 ?
                 Messages.INFORMATION_DELETE_NOTFOUND : Messages.SUCCESS_DELETE_DELETED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
 
         public Response GetUserById(Guid id)
@@ -81,7 +81,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
                 responseData = UserToUserDTO(result);
             }
 
-            return responseHandler.CreateResponse(message, responseData);
+            return responseService.CreateResponse(message, responseData);
         }
 
         public Response AuthenticateUser(UserCredentials credentials)
@@ -96,10 +96,10 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             {
                 message = Messages.SUCCESS_AUTHENTICATION_VALIDCREDENTIALS;
 
-                var responseUser = tokenHandler.GenerateToken();
+                var responseUser = tokenService.GenerateToken();
             }
 
-            return responseHandler.CreateResponse(message, responseData);
+            return responseService.CreateResponse(message, responseData);
         }
 
         public Response GetUsers()
@@ -111,7 +111,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             var message = users.Count() > 0 ?
                 Messages.SUCCESS_GET_RETRIEVED : Messages.INFORMATION_GET_NOTFOUND;
 
-            return responseHandler.CreateResponse(message, users);
+            return responseService.CreateResponse(message, users);
         }
 
         public Response AddUser(User user)
@@ -122,7 +122,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             var message = result == 0 ?
                 Messages.ERROR_POST_INTERNAL : Messages.SUCCESS_POST_CREATED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
 
         public Response UpdateUser(User user)
@@ -133,7 +133,7 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             var message = result == 0 ?
                 Messages.INFORMATION_PUT_NOTFOUND : Messages.SUCCESS_PUT_UPDATED;
 
-            return responseHandler.CreateResponse(message, result);
+            return responseService.CreateResponse(message, result);
         }
     }
 }

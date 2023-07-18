@@ -1,12 +1,12 @@
-﻿using FlowerForestAPI.ResponseHandlers.Models;
+﻿using FlowerForestAPI.ResponseServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlowerForestAPI.ResponseHandlers
+namespace FlowerForestAPI.ResponseServices
 {
-    public interface IResponseHandler
+    public interface IResponseService
     {
         Response CreateResponse(Messages message, object data);
     }

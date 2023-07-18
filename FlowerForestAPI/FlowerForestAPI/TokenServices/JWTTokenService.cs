@@ -10,15 +10,15 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlowerForestAPI.TokenHandlers
+namespace FlowerForestAPI.TokenServices
 {
-    public class JWTTokenHandler : ITokenHandler
+    public class JWTTokenService : ITokenService
     {
         private readonly string secret;
         private readonly double expirationTime_minutes;
         private readonly string issuer;
 
-        public JWTTokenHandler(IConfiguration configuration)
+        public JWTTokenService(IConfiguration configuration)
         {
             secret = configuration["JWTConfiguration:Secret"];
             expirationTime_minutes = double.Parse(configuration["JWTConfiguration:ExpirationTimeInMinutes"]);
@@ -27,7 +27,7 @@ namespace FlowerForestAPI.TokenHandlers
 
         public string GenerateToken()
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenService = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
@@ -36,9 +36,9 @@ namespace FlowerForestAPI.TokenHandlers
                 Issuer = issuer
             };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenService.CreateToken(tokenDescriptor);
 
-            return tokenHandler.WriteToken(token);
+            return tokenService.WriteToken(token);
         }
     }
 }

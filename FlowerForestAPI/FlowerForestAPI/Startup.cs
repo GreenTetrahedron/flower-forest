@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FlowerForestAPI.Models;
 using FlowerForestAPI.DbContexts;
-using FlowerForestAPI.ResponseHandlers;
-using FlowerForestAPI.Repositories.CataloguedPlantRepositories;
+using FlowerForestAPI.ResponseServices;
+using FlowerForestAPI.Repositories.CatalogueRepositories;
 using FlowerForestAPI.Repositories.PlantRepositories;
 using FlowerForestAPI.Repositories.UserRepositories;
-using FlowerForestAPI.TokenHandlers;
+using FlowerForestAPI.TokenServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -63,10 +63,10 @@ namespace FlowerForestAPI
             services.AddDbContext<FlowerForestContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FlowerForestDBConnectionString")));
 
-            services.AddScoped<IResponseHandler, ResponseHandler>();
-            services.AddScoped<ITokenHandler, JWTTokenHandler>();
+            services.AddScoped<IResponseService, ResponseService>();
+            services.AddScoped<ITokenService, JWTTokenService>();
 
-            services.AddScoped<ICataloguedPlantRepository, CataloguedPlantRepository>();
+            services.AddScoped<ICatalogueRepository, CatalogueRepository>();
             services.AddScoped<IPlantRepository, PlantRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FlowerForestAPI.TokenHandlers
+namespace FlowerForestAPI.TokenServices
 {
-    public interface ITokenHandler
+    public interface ITokenService
     {
         string GenerateToken();
     }
