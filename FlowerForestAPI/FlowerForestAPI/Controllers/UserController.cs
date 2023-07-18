@@ -17,10 +17,13 @@ namespace FlowerForestAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository userRepository;
+        private readonly IAuthorizationService authorizationService;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository,
+            IAuthorizationService authorizationService)
         {
             this.userRepository = userRepository;
+            this.authorizationService = authorizationService;
         }
 
         [HttpGet]
@@ -32,9 +35,18 @@ namespace FlowerForestAPI.Controllers
         [Route("{id}")]
         [HttpGet]
         [Authorize]
-        public IActionResult GetUserById(Guid id)
+        public async Task<IActionResult> GetUserByIdAsync(Guid id)
         {
-            return Ok(userRepository.GetUserById(id));
+            var user = userRepository.GetUserById(id);
+
+            var authorizationResult = await authorizationService.AuthorizeAsync(User, new User() { Id = ((UserDTO)(user.Data)).Id }, "CreatorOnlyPolicy");
+
+            if (authorizationResult.Succeeded)
+            {
+                return Ok(user);
+            }
+
+            return new ForbidResult();
         }
 
         [Route("Authenticate")]

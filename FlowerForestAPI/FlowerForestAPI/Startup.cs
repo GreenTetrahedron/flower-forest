@@ -21,6 +21,9 @@ using FlowerForestAPI.TokenServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FlowerForestAPI.Requirements;
+using FlowerForestAPI.Requirements.SameUserAuthorizationHandler;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FlowerForestAPI
 {
@@ -59,6 +62,14 @@ namespace FlowerForestAPI
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWTConfiguration:Secret"]))
                     };
                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("CreatorOnlyPolicy", policy =>
+                    policy.Requirements.Add(new SameUserRequirement()));
+            });
+
+            services.AddSingleton<IAuthorizationHandler, SameUserAuthorizationHandler>();
 
             services.AddDbContext<FlowerForestContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FlowerForestDBConnectionString")));

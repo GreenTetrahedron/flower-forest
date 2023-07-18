@@ -73,6 +73,29 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Authorization/3.1.32": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Metadata": "3.1.32",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.32",
+          "Microsoft.Extensions.Options": "3.1.32"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Metadata/3.1.32": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -2295,6 +2318,40 @@
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.3.1.32.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authorization/3.1.32": {
+      "sha512": "crGS0sKvN/pH/efVpWYLQCIHBxF4RE7mz7s6fa2ULk8WKiFkEoGbdB7dcafNA1LTmwcLxuAQhL7Hyu82mSYVlQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authorization/3.1.32",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
+        "microsoft.aspnetcore.authorization.3.1.32.nupkg.sha512",
+        "microsoft.aspnetcore.authorization.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Metadata/3.1.32": {
+      "sha512": "NnvOzh1mBesgFXXvNIdPCunEgo0H+08yHjAUuxorYM+yGbXYT32T8UFBWXWE0WR3a8v8qlUHlqgm6pWPEs7rWA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.metadata/3.1.32",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.xml",
+        "microsoft.aspnetcore.metadata.3.1.32.nupkg.sha512",
+        "microsoft.aspnetcore.metadata.nuspec"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -7494,6 +7551,7 @@
       "Microsoft.AspNet.WebApi.Core >= 5.2.9",
       "Microsoft.AspNet.WebApi.Cors >= 5.2.9",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.32",
+      "Microsoft.AspNetCore.Authorization >= 3.1.32",
       "Microsoft.EntityFrameworkCore.InMemory >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17"
@@ -7555,6 +7613,10 @@
             "version": "[5.2.9, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[3.1.32, )"
+          },
+          "Microsoft.AspNetCore.Authorization": {
             "target": "Package",
             "version": "[3.1.32, )"
           },

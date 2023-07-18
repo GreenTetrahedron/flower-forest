@@ -25,12 +25,16 @@ namespace FlowerForestAPI.TokenServices
             issuer = configuration["JWTConfiguration:Issuer"];
         }
 
-        public string GenerateToken()
+        public string GenerateToken(User user)
         {
             var tokenService = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
+                Subject = new ClaimsIdentity( new[]
+                {
+                        new Claim("Id", user.Id.ToString())
+                }),
                 Expires = DateTime.UtcNow.AddMinutes(expirationTime_minutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256),
                 Issuer = issuer

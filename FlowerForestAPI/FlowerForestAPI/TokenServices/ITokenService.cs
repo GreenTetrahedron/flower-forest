@@ -9,6 +9,6 @@ namespace FlowerForestAPI.TokenServices
 {
     public interface ITokenService
     {
-        string GenerateToken();
+        string GenerateToken(User user);
     }
 }

@@ -96,7 +96,10 @@ namespace FlowerForestAPI.Repositories.UserRepositories
             {
                 message = Messages.SUCCESS_AUTHENTICATION_VALIDCREDENTIALS;
 
-                var responseUser = tokenService.GenerateToken();
+                var token = tokenService.GenerateToken(resultUser);
+
+                responseData.User = UserToUserDTO(resultUser);
+                responseData.Token = token;
             }
 
             return responseService.CreateResponse(message, responseData);
