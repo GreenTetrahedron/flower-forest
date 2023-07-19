@@ -101,5 +101,15 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
 
             return responseService.CreateResponse(message, result);
         }
+
+        public dynamic GetColumnByCatalogueId(string column, Guid id)
+        {
+            var result = flowerForestContext.Catalogues
+                .SingleOrDefault(c => c.Id == id)
+                .GetType()
+                .GetProperty(column);
+
+            return result;
+        }
     }
 }

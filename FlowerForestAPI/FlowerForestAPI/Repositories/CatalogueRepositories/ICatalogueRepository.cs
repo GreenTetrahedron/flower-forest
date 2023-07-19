@@ -9,6 +9,7 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
 {
     public interface ICatalogueRepository
     {
+        dynamic GetColumnByCatalogueId(string column, Guid id);
         Response GetCataloguesByUserId(Guid userId);
         Response GetCatalogueById(Guid id);
         Response GetCatalogues();

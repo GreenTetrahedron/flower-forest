@@ -1,5 +1,8 @@
-﻿using FlowerForestAPI.Models;
+﻿using FlowerForestAPI.AuthorizeUserServices;
+using FlowerForestAPI.DTOs;
+using FlowerForestAPI.Models;
 using FlowerForestAPI.Repositories.CatalogueRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,51 +12,80 @@ using System.Threading.Tasks;
 namespace FlowerForestAPI.Controllers
 {
     [Route("api/{controller}")]
+    [Authorize]
     public class CatalogueController : ControllerBase
     {
         private readonly ICatalogueRepository catalogueRepository;
+        private readonly IAuthorizeUserService authorizeUserService;
 
-        public CatalogueController(ICatalogueRepository catalogueRepository)
+        public CatalogueController(ICatalogueRepository catalogueRepository,
+            IAuthorizeUserService authorizeUserService)
         {
             this.catalogueRepository = catalogueRepository;
+            this.authorizeUserService = authorizeUserService;
         }
 
         [HttpPost]
-        public IActionResult CreateCataloguedPlant([FromBody] Catalogue catalogue)
+        [AllowAnonymous]
+        public IActionResult CreateCatalogue([FromBody] Catalogue catalogue)
         {
             return Ok(catalogueRepository.AddCatalogue(catalogue));
         }
 
         [HttpGet]
-        public IActionResult GetCataloguedPlants()
+        [Authorize] // To be authorized with roles
+        public IActionResult GetCatalogues()
         {
             return Ok(catalogueRepository.GetCatalogues());
         }
 
-        [Route("/Catalogue/{userId}")]
+        [Route("User/{userId}")]
         [HttpGet]
-        public IActionResult GetCataloguedPlantsByUserId([FromRoute] Guid userId)
+        public async Task<IActionResult> GetCataloguesByUserId([FromRoute] Guid userId)
         {
-            return Ok(catalogueRepository.GetCataloguesByUserId(userId));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, userId);
+
+            if (authorizationResult.Succeeded)
+                return Ok(catalogueRepository.GetCataloguesByUserId(userId));
+
+            return new ForbidResult();
+
         }
 
         [Route("/{id}")]
         [HttpGet]
-        public IActionResult GetCataloguedPlantById([FromRoute] Guid id)
+        public async Task<IActionResult> GetCatalogueById([FromRoute] Guid id)
         {
-            return Ok(catalogueRepository.GetCatalogueById(id));
+            var response = catalogueRepository.GetCatalogueById(id);
+
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, ((CatalogueDTO)(response.Data)).UserId);
+
+            if (authorizationResult.Succeeded)
+                return Ok(response);
+
+            return new ForbidResult();
         }
 
         [HttpPut]
-        public IActionResult UpdateCataloguedPlant([FromBody] Catalogue catalogue)
+        public async Task<IActionResult> UpdateCatalogue([FromBody] Catalogue catalogue)
         {
-            return Ok(catalogueRepository.UpdateCatalogue(catalogue));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+
+            if (authorizationResult.Succeeded)
+                return Ok(catalogueRepository.UpdateCatalogue(catalogue));
+
+            return new ForbidResult();
         }
 
         [HttpDelete]
-        public IActionResult DeleteCataloguedPlant([FromBody] Catalogue catalogue)
+        public async Task<IActionResult> DeleteCatalogue([FromBody] Catalogue catalogue)
         {
-            return Ok(catalogueRepository.DeleteCatalogue(catalogue));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+
+            if (authorizationResult.Succeeded)
+                return Ok(catalogueRepository.DeleteCatalogue(catalogue));
+
+            return new ForbidResult();
         }
     }
 }

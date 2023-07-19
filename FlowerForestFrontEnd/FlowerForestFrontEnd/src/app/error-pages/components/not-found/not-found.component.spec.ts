@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlantListComponent } from './plant-list.component';
+import { NotFoundComponent } from './not-found.component';
 
-describe('PlantListComponent', () => {
-  let component: PlantListComponent;
-  let fixture: ComponentFixture<PlantListComponent>;
+describe('NotFoundComponent', () => {
+  let component: NotFoundComponent;
+  let fixture: ComponentFixture<NotFoundComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PlantListComponent]
+      declarations: [NotFoundComponent]
     });
-    fixture = TestBed.createComponent(PlantListComponent);
+    fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

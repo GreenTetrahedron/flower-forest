@@ -1,21 +1,21 @@
-import { PlantListComponent } from '../plants/components/plant-list/plant-list.component';
-import { PlantDetailsComponent } from '../plants/components/plant-details/plant-details.component';
+import { NotFoundComponent } from '../error-pages/components/not-found/not-found.component';
+
+import { UserDetailsComponent } from '../user/components/user-details/user-details.component';
+import { AuthenticateUserComponent } from '../user/components/authenticate-user/authenticate-user.component';
+
 
 import { RouterModule, Routes } from '@angular/router';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { AuthenticateUserComponent } from '../user/components/authenticate-user/authenticate-user.component';
-import { UserDetailsComponent } from '../user/components/user-details/user-details.component';
 
 
 
 const routes: Routes = [
-  { path: "", redirectTo: "/plants", pathMatch: "full" },
-  { path: "plants", component: PlantListComponent },
-  { path: "plant/:id", component: PlantDetailsComponent },
   { path: "sign-in", component: AuthenticateUserComponent },
-  { path: "user/details/:id", component: UserDetailsComponent }
+  { path: "user/details/:id", component: UserDetailsComponent },
+  { path: "", redirectTo: "/plants", pathMatch: "full" },
+  { path: "**", component: NotFoundComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 ﻿using FlowerForestAPI.Models;
+using FlowerForestAPI.Repositories.CatalogueRepositories;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,14 @@ namespace FlowerForestAPI.AuthorizeUserServices
     {
         private readonly IAuthorizationService authorizationService;
 
-        public AuthorizeUserService(IAuthorizationService authorizationService)
+        private readonly ICatalogueRepository catalogueRepository;
+
+        public AuthorizeUserService(IAuthorizationService authorizationService,
+            ICatalogueRepository catalogueRepository)
         {
             this.authorizationService = authorizationService;
+
+            this.catalogueRepository = catalogueRepository;
         }
 
         public async Task<AuthorizationResult> AuthorizeUserId(ClaimsPrincipal claims, Guid id)
@@ -23,5 +29,25 @@ namespace FlowerForestAPI.AuthorizeUserServices
 
             return authorizationResult;
         }
+
+        public async Task<AuthorizationResult> AuthorizeCatalogueUserId(ClaimsPrincipal claims, Guid id)
+        {
+            Guid userId = (Guid)catalogueRepository.GetColumnByCatalogueId(nameof(Catalogue.UserId), id);
+
+            return await AuthorizeUserId(claims, userId);
+        }
+
+        public async Task<AuthorizationResult> AuthorizePublicCatalogueById(ClaimsPrincipal claims, Guid id)
+        {
+            bool isPublic = (bool)catalogueRepository.GetColumnByCatalogueId(nameof(Catalogue.IsPublic), id);
+
+            if (isPublic)
+            {
+                return AuthorizationResult.Success();
+            }
+
+            return AuthorizationResult.Failed();
+        }
+
     }
 }

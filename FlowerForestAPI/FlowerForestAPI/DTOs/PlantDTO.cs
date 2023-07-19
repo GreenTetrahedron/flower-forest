@@ -15,5 +15,8 @@ namespace FlowerForestAPI.DTOs
         public string? CommonName { get; set; }
 
         public string PhotoUrl { get; set; }
+
+
+        public Guid CatalogueId { get; set; }
     }
 }

@@ -32,7 +32,8 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
                 Species = plant.Species,
                 PhotoUrl = plant.PhotoUrl,
                 CommonName = plant.CommonName,
-                MaxHeight_metres = plant.MaxHeight_metres
+                MaxHeight_metres = plant.MaxHeight_metres,
+                CatalogueId = plant.CatalogueId           
             };
         }
 
@@ -64,6 +65,18 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             }
 
             return responseService.CreateResponse(message, responsePlant);
+        }
+
+        public Response GetPlantsByCatalogueId(Guid id)
+        {
+            var plants = flowerForestContext.Plants
+                .Where(p => p.CatalogueId == id)
+                .Select(p => PlantToPlantDTO(p));
+
+            var message = plants.Count() > 0 ?
+                Messages.SUCCESS_GET_RETRIEVED : Messages.INFORMATION_GET_NOTFOUND;
+
+            return responseService.CreateResponse(message, plants);
         }
 
         public Response GetPlants()

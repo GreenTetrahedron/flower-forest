@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace FlowerForestAPI.Controllers
 {
     [Route("api/{controller}")]
+    [Authorize]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -29,6 +30,7 @@ namespace FlowerForestAPI.Controllers
 
 
         [HttpGet]
+        [Authorize] // To be authorized by role
         public IActionResult GetUsers()
         {
             return Ok(userRepository.GetUsers());
@@ -36,17 +38,14 @@ namespace FlowerForestAPI.Controllers
 
         [Route("{id}")]
         [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetUserByIdAsync(Guid id)
+        public async Task<IActionResult> GetUserByIdAsync([FromRoute] Guid id)
         {
             var user = userRepository.GetUserById(id);
 
             var authorizationResult = await authorizeUserService.AuthorizeUserId(User, ((UserDTO)(user.Data)).Id);
 
             if (authorizationResult.Succeeded)
-            {
                 return Ok(user);
-            }
 
             return new ForbidResult();
         }
@@ -60,28 +59,44 @@ namespace FlowerForestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser(User user)
+        [AllowAnonymous]
+        public IActionResult AddUser([FromBody] User user)
         {
             return Ok(userRepository.AddUser(user));
         }
 
         [HttpPut]
-        public IActionResult UpdateUser(User user)
+        public async Task<IActionResult> UpdateUser([FromBody] User user)
         {
-            return Ok(userRepository.UpdateUser(user));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, user.Id);
+
+            if (authorizationResult.Succeeded)
+                return Ok(userRepository.UpdateUser(user));
+
+            return new ForbidResult();
         }
 
         [HttpDelete]
-        public IActionResult DeleteUser(User user)
+        public async Task<IActionResult> DeleteUser([FromBody] User user)
         {
-            return Ok(userRepository.DeleteUser(user));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, user.Id);
+
+            if (authorizationResult.Succeeded)
+                return Ok(userRepository.DeleteUser(user));
+
+            return new ForbidResult();
         }
 
         [Route("{id}")]
         [HttpDelete]
-        public IActionResult DeleteUserById(Guid id)
+        public async Task<IActionResult> DeleteUserById([FromRoute] Guid id)
         {
-            return Ok(userRepository.DeleteUserById(id));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, id);
+
+            if (authorizationResult.Succeeded)
+                return Ok(userRepository.DeleteUserById(id));
+
+            return new ForbidResult();
         }
     }
 }

@@ -10,5 +10,9 @@ namespace FlowerForestAPI.AuthorizeUserServices
     public interface IAuthorizeUserService
     {
         Task<AuthorizationResult> AuthorizeUserId(ClaimsPrincipal claims, Guid id);
+
+        Task<AuthorizationResult> AuthorizeCatalogueUserId(ClaimsPrincipal claims, Guid id);
+
+        Task<AuthorizationResult> AuthorizePublicCatalogueById(ClaimsPrincipal claims, Guid id);
     }
 }

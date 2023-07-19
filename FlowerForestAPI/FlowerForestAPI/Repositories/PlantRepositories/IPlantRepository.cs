@@ -8,6 +8,7 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
     {
         Response GetPlants();
         Response GetPlantById(Guid id);
+        Response GetPlantsByCatalogueId(Guid id);
         Response AddPlant(Plant plant);
         Response UpdatePlant(Plant plant);
         Response DeletePlant(Plant plant);

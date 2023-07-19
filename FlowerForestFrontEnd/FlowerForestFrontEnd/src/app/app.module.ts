@@ -1,6 +1,5 @@
 import { UserModule } from './user/user.module';
 import { HeaderModule } from './header/header.module';
-import { PlantsModule } from './plants/plants.module';
 
 import { AppRoutingModule } from './routing/app-routing.module';
 
@@ -17,7 +16,6 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    PlantsModule,
     SharedModule,
     AppRoutingModule,
     HeaderModule,
