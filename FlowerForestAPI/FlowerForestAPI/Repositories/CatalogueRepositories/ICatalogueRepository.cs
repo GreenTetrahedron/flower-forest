@@ -11,6 +11,7 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
     {
         dynamic GetColumnByCatalogueId(string column, Guid id);
         Response GetCataloguesByUserId(Guid userId);
+        Response GetPublicCatalogues();
         Response GetCatalogueById(Guid id);
         Response GetCatalogues();
         Response AddCatalogue(Catalogue catalogue);

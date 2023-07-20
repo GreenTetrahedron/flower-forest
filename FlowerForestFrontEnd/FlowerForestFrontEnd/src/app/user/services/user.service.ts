@@ -1,38 +1,41 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
-import { MessageResponse } from 'src/app/shared/models/response';
-import { UserDTOWithToken } from '../models/userDTOWithToken';
+import { ApiInteractionsService } from 'src/app/api-interactions/services/api-interactions.service';
+
+import { UserWithToken } from '../models/userWithToken';
+import { User } from '../models/user';
+import { MessageResponse } from 'src/app/api-interactions/models/message-response';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly requestPath: string = "https://localhost:44375/api/User/"
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
+  private readonly controller: string = "User";
 
-  private token?: string = undefined;
+  constructor(private apiInteractionsService: ApiInteractionsService) { }
 
-  constructor(private http: HttpClient) { }
+  authenticateUser(username: string, password: string): Observable<User> {
+    var response = this.apiInteractionsService.postToApi(this.controller, { "username": username, "password": password }, "Authenticate")
+    
+    response.subscribe((r: MessageResponse) => {
+      this.apiInteractionsService.setToken((r.data as UserWithToken).token);
+    });
 
-  authenticateUser(username: string, password: string): Observable<MessageResponse> {
-    var response = this.http.post<MessageResponse>(this.requestPath + "Authenticate", { "username": username, "password": password }, this.httpOptions);
-    response
-      .subscribe(r => {
-        this.token = (r.data as UserDTOWithToken).token;
-        this.httpOptions.headers = this.httpOptions.headers.set("Authorization", `Bearer ${this.token}`);
-      });
+    var user = response.pipe(
+      map((r: MessageResponse) => (r.data as UserWithToken).user as User)
+    );
 
-    return response;
+    return user;
   }
 
-  getUserDetailsById(id: string): Observable<MessageResponse> {
-    return this.http.get<MessageResponse>(`${this.requestPath}${id}`, this.httpOptions);
+  getUserDetailsById(id: string): Observable<User> {
+    var user = this.apiInteractionsService.getFromApi(this.controller, [id]).pipe(
+      map((x: MessageResponse) => {
+        return x.data as User;
+      })
+    );
+
+    return user;
   }
 }

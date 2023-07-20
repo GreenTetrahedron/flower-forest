@@ -2,6 +2,7 @@ import { NotFoundComponent } from '../error-pages/components/not-found/not-found
 
 import { UserDetailsComponent } from '../user/components/user-details/user-details.component';
 import { AuthenticateUserComponent } from '../user/components/authenticate-user/authenticate-user.component';
+import { CatalogueListComponent } from '../catalogue/components/catalogue-list/catalogue-list.component';
 
 
 import { RouterModule, Routes } from '@angular/router';
@@ -12,10 +13,11 @@ import { NgModule } from '@angular/core';
 
 
 const routes: Routes = [
-  { path: "sign-in", component: AuthenticateUserComponent },
   { path: "user/details/:id", component: UserDetailsComponent },
-  { path: "", redirectTo: "/plants", pathMatch: "full" },
-  { path: "**", component: NotFoundComponent}
+  { path: "sign-in", component: AuthenticateUserComponent },
+  { path: "catalogues", component: CatalogueListComponent },
+  { path: "", redirectTo: "/catalogues", pathMatch: "full" },
+  { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({

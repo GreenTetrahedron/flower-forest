@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ApiInteractionsModule } from '../api-interactions/api-interactions.module';
+
 import { BackButtonComponent } from './components/back-button/back-button.component';
 
 
@@ -12,7 +15,8 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     CommonModule
   ],
   exports: [
-    BackButtonComponent
+    BackButtonComponent,
+    ApiInteractionsModule
   ]
 })
 export class SharedModule { }

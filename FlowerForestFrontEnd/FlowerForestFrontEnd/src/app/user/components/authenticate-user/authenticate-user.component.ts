@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { UserService } from '../../services/user.service';
-import { UserDTOWithToken } from '../../models/userDTOWithToken';
 
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
 
 
 @Component({
@@ -23,12 +23,12 @@ export class AuthenticateUserComponent {
   });
 
   submit() {
-    console.log("HELLO");
-
     var username = this.authenticationForm.get("username")?.value;
     var password = this.authenticationForm.get("password")?.value;
 
     this.userService.authenticateUser(username, password)
-      .subscribe(r => this.router.navigateByUrl(`user/details/${(r.data as UserDTOWithToken).user.id}`));
+      .subscribe((u: User) => {
+        this.router.navigateByUrl(`user/details/${u?.id}`);
+      });
   }
 }

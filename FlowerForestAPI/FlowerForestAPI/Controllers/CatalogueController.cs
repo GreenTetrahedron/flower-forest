@@ -39,6 +39,14 @@ namespace FlowerForestAPI.Controllers
             return Ok(catalogueRepository.GetCatalogues());
         }
 
+        [Route("Public")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult GetPublicCatalogues()
+        {
+            return Ok(catalogueRepository.GetPublicCatalogues());
+        }
+
         [Route("User/{userId}")]
         [HttpGet]
         public async Task<IActionResult> GetCataloguesByUserId([FromRoute] Guid userId)

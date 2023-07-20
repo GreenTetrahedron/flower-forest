@@ -1,3 +1,4 @@
+import { CatalogueModule } from './catalogue/catalogue.module';
 import { UserModule } from './user/user.module';
 import { HeaderModule } from './header/header.module';
 
@@ -19,7 +20,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     AppRoutingModule,
     HeaderModule,
-    UserModule
+    UserModule,
+    CatalogueModule
   ],
   providers: [],
   bootstrap: [AppComponent]

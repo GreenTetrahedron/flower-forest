@@ -1,1 +1,7 @@
-<p>catalogue-list works!</p>
+<div *ngIf="catalogues.length > 0">
+    <ul>
+        <li *ngFor="let catalogue of catalogues">
+            <h2>catalogue.Name</h2>
+        </li>
+    </ul>
+</div>

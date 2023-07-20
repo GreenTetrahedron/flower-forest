@@ -1,9 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { SharedModule } from '../shared/shared.module';
 
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
@@ -19,8 +19,8 @@ import { AuthenticateUserComponent } from './components/authenticate-user/authen
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class UserModule { }

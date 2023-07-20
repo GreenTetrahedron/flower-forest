@@ -111,5 +111,17 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
 
             return result;
         }
+
+        public Response GetPublicCatalogues()
+        {
+            var catalogues = flowerForestContext.Catalogues
+                .Where(c => c.IsPublic == true)
+                .Select(c => CatalogueToCatalogueDTO(c));
+
+            var message = catalogues.Count() > 0 ?
+                Messages.SUCCESS_GET_RETRIEVED : Messages.INFORMATION_GET_NOTFOUND;
+
+            return responseService.CreateResponse(message, catalogues);
+        }
     }
 }
