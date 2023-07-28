@@ -1,22 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ApiInteractionsModule } from '../api-interactions/api-interactions.module';
+import { AppRoutingModule } from '../routing/app-routing.module';
+
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { ErrorMessagesModule } from '../error-messages/error-messages.module';
+
 
 import { BackButtonComponent } from './components/back-button/back-button.component';
 
 
-
 @NgModule({
   declarations: [
-    BackButtonComponent
+    BackButtonComponent,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     BackButtonComponent,
-    ApiInteractionsModule
+    ErrorMessagesModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

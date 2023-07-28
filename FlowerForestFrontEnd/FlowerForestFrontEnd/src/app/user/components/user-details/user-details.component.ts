@@ -12,22 +12,30 @@ import { UserService } from '../../services/user.service';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent implements OnInit{
-  @Input() user?: User;
+export class UserDetailsComponent implements OnInit {
+  @Input({ required: true }) userId?: string;
 
-  constructor(private readonly userService: UserService,
-    private readonly route: ActivatedRoute, private readonly location: Location) { }
+  user?: User;
+
+  constructor(private readonly userService: UserService) { }
 
   ngOnInit(): void {
-      this.getUser();
+    this.getUser();
   }
 
   getUser() {
-    const id = String(this.route.snapshot.paramMap.get("id"));
-
-    this.userService.getUserDetailsById(id)
-      .subscribe((u: User) => {
-        this.user = u;
+    if (this.userId == undefined) {
+      return;
+    }
+    this.userService.getUserDetailsById(this.userId)
+      .subscribe({
+        next: (u: User) => {
+          this.user = u;
+          this.userId = this.user!.id;
+          localStorage.setItem("user", JSON.stringify(this.user));
+        },
+        error: () => {
+        }
       });
   }
 }

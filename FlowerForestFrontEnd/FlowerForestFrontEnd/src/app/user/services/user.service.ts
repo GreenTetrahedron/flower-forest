@@ -1,41 +1,61 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
+
 import { Injectable } from '@angular/core';
 
-import { ApiInteractionsService } from 'src/app/api-interactions/services/api-interactions.service';
 
-import { UserWithToken } from '../models/userWithToken';
+import { Observable, catchError, map, throwError } from 'rxjs';
+
+
+import { AuthenticationResult } from '../models/authenticationResult';
+import { MessageResponse } from 'src/app/shared/models/message-response';
+
 import { User } from '../models/user';
-import { MessageResponse } from 'src/app/api-interactions/models/message-response';
-import { Observable, map } from 'rxjs';
+import { UserWithToken } from '../models/userWithToken';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly controller: string = "User";
 
-  constructor(private apiInteractionsService: ApiInteractionsService) { }
+  private readonly requestUrl: string = "https://localhost:44375/api/User";
+  private httpOptions = {
+    headers: new HttpHeaders({ 
+      "Content-Type": "application/json"
+    })
+  };
 
-  authenticateUser(username: string, password: string): Observable<User> {
-    var response = this.apiInteractionsService.postToApi(this.controller, { "username": username, "password": password }, "Authenticate")
-    
-    response.subscribe((r: MessageResponse) => {
-      this.apiInteractionsService.setToken((r.data as UserWithToken).token);
-    });
+  constructor(private readonly http: HttpClient) { }
 
-    var user = response.pipe(
-      map((r: MessageResponse) => (r.data as UserWithToken).user as User)
-    );
+  authenticateUser(username: string, password: string): Observable<AuthenticationResult> {
+    return this.http
+      .post<MessageResponse>(this.requestUrl + "/Authenticate", {"username": username, "password": password}, this.httpOptions)
+      .pipe(
+        map((response: MessageResponse) => {
+          const userWithToken: UserWithToken = (response.data as UserWithToken);
+          const user: User = userWithToken.user;
+          const authenticationSuccess: boolean = (response.message === "SUCCESS_AUTHENTICATION_VALIDCREDENTIALS");
+          
+          if (authenticationSuccess === true) {
+            localStorage.setItem("token", userWithToken.token);
+          }
 
-    return user;
+          return {
+            authenticationSuccess: authenticationSuccess,
+            user: user
+          } as AuthenticationResult
+        })
+      );
   }
 
   getUserDetailsById(id: string): Observable<User> {
-    var user = this.apiInteractionsService.getFromApi(this.controller, [id]).pipe(
-      map((x: MessageResponse) => {
-        return x.data as User;
-      })
-    );
-
-    return user;
+    return this.http
+      .get<MessageResponse>(this.requestUrl + `/${id}`, this.httpOptions)
+      .pipe(
+        map((response: MessageResponse) => {
+          const user: User = response.data as User;
+          return user;
+        })
+      )
   }
 }

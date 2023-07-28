@@ -1,0 +1,5 @@
+<app-edit-catalogue [catalogueId]="catalogueId!"></app-edit-catalogue>
+<button (click)="displayAddPlantForm()">Add Plant</button>
+<app-plant-list #plantListComponent [plants]="plants" [onViewDo]="onViewingPlant.bind(this)"></app-plant-list>
+<app-add-plant #addPlantComponent [hidden]="!addingPlant" [onSubmitDo]="onAddingPlant.bind(this)" [catalogueId]="catalogueId!"></app-add-plant>
+<app-edit-plant #editPlantComponent *ngIf="selectedPlant != undefined" [hidden]="!editingPlant" [onDeleteDo]="onDeletingPlant.bind(this)" [onSubmitDo]="onEditingPlant.bind(this)" [catalogueId]="catalogueId!" [plantId]="selectedPlant.id"></app-edit-plant>

@@ -1,0 +1,24 @@
+<form [formGroup]="editPlantFormGroup" (ngSubmit)="submit()">
+    <div>
+        <label for="commonName">Common name: </label>
+        <input formControlName="commonName" id="commonName" />
+    </div>
+    <div>
+        <label for="genus">Genus: </label>
+        <input formControlName="genus" id="genus" />
+    </div>
+    <div>
+        <label for="species">Species: </label>
+        <input formControlName="species" id="species" />
+    </div>
+    <div>
+        <label for="maxHeight_metres">Max height (metres): </label>
+        <input formControlName="maxHeight_metres" id="maxHeight_metres" />
+    </div>
+    <div>
+        <label for="photoUrl">Photo url: </label>
+        <input formControlName="photoUrl" id="photoUrl" />
+    </div>
+    <button type="submit">Save</button>
+    <button type="button" (click)="deletePlant()">Delete</button>
+</form>

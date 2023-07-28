@@ -40,14 +40,12 @@ namespace FlowerForestAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserByIdAsync([FromRoute] Guid id)
         {
-            var user = userRepository.GetUserById(id);
-
-            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, ((UserDTO)(user.Data)).Id);
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, id);
 
             if (authorizationResult.Succeeded)
-                return Ok(user);
+                return Ok(userRepository.GetUserById(id));
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [Route("Authenticate")]
@@ -73,7 +71,7 @@ namespace FlowerForestAPI.Controllers
             if (authorizationResult.Succeeded)
                 return Ok(userRepository.UpdateUser(user));
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [HttpDelete]
@@ -84,7 +82,7 @@ namespace FlowerForestAPI.Controllers
             if (authorizationResult.Succeeded)
                 return Ok(userRepository.DeleteUser(user));
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [Route("{id}")]
@@ -96,7 +94,7 @@ namespace FlowerForestAPI.Controllers
             if (authorizationResult.Succeeded)
                 return Ok(userRepository.DeleteUserById(id));
 
-            return new ForbidResult();
+            return NotFound();
         }
     }
 }

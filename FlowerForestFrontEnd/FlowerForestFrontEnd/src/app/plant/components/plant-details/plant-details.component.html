@@ -1,0 +1,6 @@
+<div *ngIf="plant != undefined">
+    <h2>{{plant.commonName}}</h2>
+    <i>{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</i>
+    <img src="{{plant.photoUrl}}" />
+    <span>Max height (metres)</span><span>{{plant.maxHeight_metres}}</span>
+</div>

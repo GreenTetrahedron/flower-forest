@@ -26,10 +26,15 @@ namespace FlowerForestAPI.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public IActionResult CreateCatalogue([FromBody] Catalogue catalogue)
+        [Authorize]
+        public async Task<IActionResult> CreateCatalogue([FromBody] CatalogueDTO catalogue)
         {
-            return Ok(catalogueRepository.AddCatalogue(catalogue));
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+
+            if (authorizationResult.Succeeded)
+                return Ok(catalogueRepository.AddCatalogue(catalogue));
+
+            return NotFound();
         }
 
         [HttpGet]
@@ -56,44 +61,54 @@ namespace FlowerForestAPI.Controllers
             if (authorizationResult.Succeeded)
                 return Ok(catalogueRepository.GetCataloguesByUserId(userId));
 
-            return new ForbidResult();
+            return NotFound();
 
         }
 
-        [Route("/{id}")]
+        [Route("{id}")]
         [HttpGet]
         public async Task<IActionResult> GetCatalogueById([FromRoute] Guid id)
         {
             var response = catalogueRepository.GetCatalogueById(id);
+            var catalogue = (CatalogueDTO)response.Data;
 
-            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, ((CatalogueDTO)(response.Data)).UserId);
+            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, id);
 
-            if (authorizationResult.Succeeded)
+            if (publicCatalogueAuthorizationResult.Succeeded || authorizationResult.Succeeded)
                 return Ok(response);
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateCatalogue([FromBody] Catalogue catalogue)
         {
             var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, catalogue.Id);
 
             if (authorizationResult.Succeeded)
                 return Ok(catalogueRepository.UpdateCatalogue(catalogue));
 
-            return new ForbidResult();
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return new ForbidResult();
+
+            return NotFound();
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteCatalogue([FromBody] Catalogue catalogue)
         {
             var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, catalogue.Id);
 
             if (authorizationResult.Succeeded)
                 return Ok(catalogueRepository.DeleteCatalogue(catalogue));
 
-            return new ForbidResult();
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return new ForbidResult();
+
+            return NotFound();
         }
     }
 }

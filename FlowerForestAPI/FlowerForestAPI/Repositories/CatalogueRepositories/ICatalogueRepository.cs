@@ -1,4 +1,5 @@
-﻿using FlowerForestAPI.Models;
+﻿using FlowerForestAPI.DTOs;
+using FlowerForestAPI.Models;
 using FlowerForestAPI.ResponseServices.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
         Response GetPublicCatalogues();
         Response GetCatalogueById(Guid id);
         Response GetCatalogues();
-        Response AddCatalogue(Catalogue catalogue);
+        Response AddCatalogue(CatalogueDTO catalogue);
         Response UpdateCatalogue(Catalogue catalogue);
         Response DeleteCatalogue(Catalogue catalogue);
     }

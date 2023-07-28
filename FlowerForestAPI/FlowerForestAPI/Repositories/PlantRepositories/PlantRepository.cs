@@ -99,7 +99,15 @@ namespace FlowerForestAPI.Repositories.PlantRepositories
             var message = result == 0 ?
                 Messages.ERROR_POST_INTERNAL : Messages.SUCCESS_POST_CREATED;
 
-            return responseService.CreateResponse(message, result);
+            PlantDTO response = null;
+
+            if (result != 0)
+            {
+                message = Messages.SUCCESS_POST_CREATED;
+                response = PlantToPlantDTO(plant);                
+            }
+
+            return responseService.CreateResponse(message, response);
         }
 
         public Response UpdatePlant(Plant plant)

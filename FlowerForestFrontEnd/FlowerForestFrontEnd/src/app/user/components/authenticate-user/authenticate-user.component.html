@@ -1,4 +1,5 @@
 <form [formGroup]="authenticationForm" (ngSubmit)="submit()">
+    <app-form-error-message *ngIf="validCredentials === false" message="Incorrect username or password"></app-form-error-message>
     <div>
         <label for="username">Username: </label>
         <input id="username" type="text" formControlName="username" />

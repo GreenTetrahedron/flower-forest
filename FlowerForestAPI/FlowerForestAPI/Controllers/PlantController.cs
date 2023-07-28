@@ -46,13 +46,9 @@ namespace FlowerForestAPI.Controllers
             var plant = (PlantDTO)(response.Data);
 
             var catalogueIsPublicAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, plant.CatalogueId);
-
-            if (catalogueIsPublicAuthorizationResult.Succeeded)
-                return Ok(response);
-
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, plant.CatalogueId);
 
-            if (authorizationResult.Succeeded)
+            if (catalogueIsPublicAuthorizationResult.Succeeded || authorizationResult.Succeeded)
                 return Ok(response);
 
             return new ForbidResult();
@@ -63,14 +59,9 @@ namespace FlowerForestAPI.Controllers
         public async Task<IActionResult> GetPlantsByCatalogueId([FromRoute] Guid id)
         {
             var catalogueIsPublicAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, id);
-
-            if (catalogueIsPublicAuthorizationResult.Succeeded)
-                return Ok(plantRepository.GetPlantsByCatalogueId(id));
-
-
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, id);
 
-            if (authorizationResult.Succeeded)
+            if (catalogueIsPublicAuthorizationResult.Succeeded || authorizationResult.Succeeded)
                 return Ok(plantRepository.GetPlantsByCatalogueId(id));
 
             return new ForbidResult();
@@ -84,29 +75,37 @@ namespace FlowerForestAPI.Controllers
             if (authorizationResult.Succeeded)
                 return Ok(plantRepository.AddPlant(plant));
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdatePlant([FromBody] Plant plant)
         {
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, plant.CatalogueId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, plant.CatalogueId);
 
             if (authorizationResult.Succeeded)
                 return Ok(plantRepository.UpdatePlant(plant));
 
-            return new ForbidResult();
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return new ForbidResult();
+
+            return NotFound();
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeletePlant([FromBody] Plant plant)
         {
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, plant.CatalogueId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, plant.CatalogueId);
 
             if (authorizationResult.Succeeded)
                 return Ok(plantRepository.DeletePlant(plant));
 
-            return new ForbidResult();
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return new ForbidResult();
+
+            return NotFound();
         }
     }
 }

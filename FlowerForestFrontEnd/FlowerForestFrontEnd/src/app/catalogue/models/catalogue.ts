@@ -1,5 +1,6 @@
 export interface Catalogue {
-    Id: string,
-    Name: string,
-    UserId: string   
+    id: string,
+    name: string,
+    userId: string,
+    isPublic: boolean
 }

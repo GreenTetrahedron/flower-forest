@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
+import { AuthenticationResult } from '../../models/authenticationResult';
 
 
 @Component({
@@ -22,13 +22,25 @@ export class AuthenticateUserComponent {
     password: new FormControl(''),
   });
 
+  validCredentials: boolean = true;
+
   submit() {
     var username = this.authenticationForm.get("username")?.value;
     var password = this.authenticationForm.get("password")?.value;
 
     this.userService.authenticateUser(username, password)
-      .subscribe((u: User) => {
-        this.router.navigateByUrl(`user/details/${u?.id}`);
+      .subscribe({
+        next: (result: AuthenticationResult) => {
+          if (result.authenticationSuccess === true) {
+            this.router.navigateByUrl(`user/${result.user.id}`);
+          }
+          else {
+            this.validCredentials = false;
+          }
+        },
+        error: (error) => {
+          console.log(error);
+        }
       });
   }
 }

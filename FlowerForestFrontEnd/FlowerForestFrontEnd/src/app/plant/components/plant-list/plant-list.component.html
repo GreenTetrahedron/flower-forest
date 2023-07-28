@@ -1,0 +1,10 @@
+<div *ngIf="plants != undefined && plants.length > 0">
+    <ul>
+        <li *ngFor="let plant of plants">
+            <h2>{{plant.commonName}}</h2>
+            <i>{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</i>
+            <img src="{{plant.photoUrl}}" />
+            <button *ngIf="onViewDo != undefined" (click)="onViewDo(plant.id)">View details</button>
+        </li>
+    </ul>
+</div>

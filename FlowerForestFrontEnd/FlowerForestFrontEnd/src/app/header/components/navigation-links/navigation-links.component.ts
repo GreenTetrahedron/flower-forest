@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavigationLinksComponent {
   routes = [
-    {routerLink: "/plants", name: "plants"},
+    {routerLink: "/home", name: "home"},
     {routerLink: "/sign-in", name: "sign in"}
   ];
 

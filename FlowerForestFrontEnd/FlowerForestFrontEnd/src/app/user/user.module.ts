@@ -20,7 +20,12 @@ import { AuthenticateUserComponent } from './components/authenticate-user/authen
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+  ],
+  exports: [
+    UserDetailsComponent,
+    AddUserComponent,
+    AuthenticateUserComponent
   ]
 })
 export class UserModule { }

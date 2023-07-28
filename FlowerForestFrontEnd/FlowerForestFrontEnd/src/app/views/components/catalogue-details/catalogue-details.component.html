@@ -1,0 +1,10 @@
+<div *ngIf="catalogue != undefined">
+    <p>{{catalogue.name}}</p>
+</div>
+<app-plant-list [plants]="plants" [onViewDo]="onViewingPlant.bind(this)"></app-plant-list>
+<div [hidden]="selectedPlant == undefined && !viewingPlant">
+    <img [src]="selectedPlant!.photoUrl"/>
+    <p>{{selectedPlant!.commonName}}</p>
+    <i>{{(selectedPlant!.genus | titlecase) + " " + (selectedPlant!.species | lowercase)}}</i>
+    <p>{{selectedPlant!.maxHeight_metres}}</p>
+</div>

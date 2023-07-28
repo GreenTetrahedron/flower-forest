@@ -1,7 +1,11 @@
-<div *ngIf="catalogues.length > 0">
+<div *ngIf="catalogues != undefined && catalogues.length > 0">
     <ul>
         <li *ngFor="let catalogue of catalogues">
-            <h2>catalogue.Name</h2>
+            <h2>{{catalogue.name}}</h2>
+            <button *ngIf="onViewDetailsDo != undefined" (click)="onViewDetailsDo(catalogue.id)">View details</button>
         </li>
     </ul>
+</div>
+<div *ngIf="catalogues == undefined || catalogues.length == 0">
+    <app-data-error-message message="Roses are red, violets are blue, there are no catalogues here for you..."></app-data-error-message>
 </div>

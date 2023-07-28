@@ -5,13 +5,15 @@ import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationLinksComponent } from './components/navigation-links/navigation-links.component';
+import { UserLinksComponent } from './components/user-links/user-links.component';
 
 
 
 @NgModule({
   declarations: [
     NavigationLinksComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserLinksComponent
   ],
   imports: [
     CommonModule,

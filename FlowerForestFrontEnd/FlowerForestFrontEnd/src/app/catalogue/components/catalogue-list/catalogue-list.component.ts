@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { CatalogueService } from '../../services/catalogue.service';
 import { Catalogue } from '../../models/catalogue';
@@ -8,16 +8,9 @@ import { Catalogue } from '../../models/catalogue';
   templateUrl: './catalogue-list.component.html',
   styleUrls: ['./catalogue-list.component.css']
 })
-export class CatalogueListComponent implements OnInit{
-  catalogues: Catalogue[] = [];
+export class CatalogueListComponent {
+  @Input({ required: true }) catalogues!: Catalogue[];
+  @Input() onViewDetailsDo?: (catalogueId: string) => void;
 
   constructor(private catalogueService: CatalogueService) { };
-
-  ngOnInit(): void {
-      this.getCatalogues()
-  }
-
-  getCatalogues() {
-    this.catalogues = this.catalogueService.getCatalogues();
-  }
 }

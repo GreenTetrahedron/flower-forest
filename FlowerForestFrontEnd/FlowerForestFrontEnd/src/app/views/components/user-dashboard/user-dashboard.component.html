@@ -1,0 +1,5 @@
+<button (click)="displayAddCatalogueForm()">Add Catalogue</button>
+<app-user-details [userId]="userId"></app-user-details>
+<app-catalogue-list #catalogueListComponent [catalogues]="catalogues" [onViewDetailsDo]="onViewingCatalogueDetails.bind(this)"></app-catalogue-list>
+<app-add-catalogue [hidden]="!addingCatalogue" #addCatalogueComponent [userId]="userId" [onSubmitDo]="onAddingCatalogue.bind(this)"></app-add-catalogue>
+<app-edit-catalogue [hidden]="!editingCatalogue" #editCatalogueComponent *ngIf="selectedCatalogue != undefined" [onSubmitDo]="onEditingCatalogue.bind(this)" [catalogueId]="selectedCatalogue.id"></app-edit-catalogue>
