@@ -69,14 +69,11 @@ namespace FlowerForestAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCatalogueById([FromRoute] Guid id)
         {
-            var response = catalogueRepository.GetCatalogueById(id);
-            var catalogue = (CatalogueDTO)response.Data;
-
-            var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
+            var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, id);
             var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, id);
 
             if (publicCatalogueAuthorizationResult.Succeeded || authorizationResult.Succeeded)
-                return Ok(response);
+                return Ok(catalogueRepository.GetCatalogueById(id));
 
             return NotFound();
         }

@@ -1,1 +1,4 @@
-<app-catalogue-list *ngIf="catalogues != undefined" [catalogues]="catalogues" [onViewDetailsDo]="onViewingCatalogue.bind(this)"></app-catalogue-list>
+<div class="container home-container">
+    <h2 class="title">Catalogues</h2>
+    <app-catalogue-list *ngIf="catalogues != undefined" [catalogues]="catalogues" [onViewDetailsDo]="onViewingCatalogue.bind(this)"></app-catalogue-list>
+</div>

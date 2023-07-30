@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 
 import { Router } from '@angular/router';
 import { AuthenticationResult } from '../../models/authenticationResult';
+import { UserStorageService } from 'src/app/storage/services/user-storage/user-storage.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthenticationResult } from '../../models/authenticationResult';
   styleUrls: ['./authenticate-user.component.css']
 })
 export class AuthenticateUserComponent {
-  constructor(private userService: UserService,
+  constructor(private readonly userService: UserService,
     private router: Router) { }
 
   authenticationForm: FormGroup = new FormGroup({

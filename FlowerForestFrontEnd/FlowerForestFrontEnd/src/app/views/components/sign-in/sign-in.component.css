@@ -1,0 +1,29 @@
+.vertical-split-sign-in-card {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 14px;
+    background-color: #f3f2f8;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.sign-in-card-left-side {
+    overflow: hidden;
+    text-align: center;
+}
+.sign-in-card-right-side {
+    padding: 35px;
+    padding-right: 39px;
+}
+.sign-in-form-container {
+    display: grid;
+    gap: 5px;
+}
+
+.sign-in-card-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 100px;
+    max-height: calc(100vh - 70px);
+}

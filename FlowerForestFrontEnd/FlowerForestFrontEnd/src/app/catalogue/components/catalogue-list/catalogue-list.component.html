@@ -1,8 +1,8 @@
-<div *ngIf="catalogues != undefined && catalogues.length > 0">
-    <ul>
-        <li *ngFor="let catalogue of catalogues">
-            <h2>{{catalogue.name}}</h2>
-            <button *ngIf="onViewDetailsDo != undefined" (click)="onViewDetailsDo(catalogue.id)">View details</button>
+<div class="catalogue-list-container" *ngIf="catalogues != undefined && catalogues.length > 0">
+    <ul class="catalogue-list">
+        <li class="catalogue" *ngFor="let catalogue of catalogues">
+            <h2 class="catalogue-name">{{catalogue.name}}</h2>
+            <button class="button view-catalogue-details-button" *ngIf="onViewDetailsDo != undefined" (click)="onViewDetailsDo(catalogue.id)">View catalogue</button>
         </li>
     </ul>
 </div>

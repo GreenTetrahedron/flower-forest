@@ -14,6 +14,7 @@ import { PlantModule } from '../plant/plant.module';
 import { CatalogueDashboardComponent } from './components/catalogue-dashboard/catalogue-dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { CatalogueDetailsComponent } from './components/catalogue-details/catalogue-details.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 
@@ -22,7 +23,8 @@ import { CatalogueDetailsComponent } from './components/catalogue-details/catalo
     UserDashboardComponent,
     CatalogueDashboardComponent,
     HomeComponent,
-    CatalogueDetailsComponent
+    CatalogueDetailsComponent,
+    SignInComponent
   ],
   imports: [
     CommonModule,

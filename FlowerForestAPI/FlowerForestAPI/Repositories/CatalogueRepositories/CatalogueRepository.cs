@@ -121,7 +121,7 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
             var catalogue = flowerForestContext.Catalogues
                 .SingleOrDefault(c => c.Id == id);
 
-            var result = catalogue.GetType()
+            var result = catalogue?.GetType()
                 .GetProperty(column).GetValue(catalogue);
 
             return result;

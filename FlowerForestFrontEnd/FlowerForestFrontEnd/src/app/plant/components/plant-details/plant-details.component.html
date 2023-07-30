@@ -1,6 +1,6 @@
-<div *ngIf="plant != undefined">
-    <h2>{{plant.commonName}}</h2>
-    <i>{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</i>
+<div class="plant-popup-container" *ngIf="plant != undefined">
+    <h2 class="plant-details-name">{{(plant.commonName != undefined && plant.commonName.length > 0? plant.commonName : (plant.genus | titlecase) + " " + (plant.species | lowercase))}}</h2>
+    <i *ngIf="plant.commonName != undefined && plant.commonName.length > 0" class="plant-binomial-name">{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</i>
     <img src="{{plant.photoUrl}}" />
     <span>Max height (metres)</span><span>{{plant.maxHeight_metres}}</span>
 </div>

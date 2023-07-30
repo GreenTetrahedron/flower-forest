@@ -51,7 +51,7 @@ namespace FlowerForestAPI.Controllers
             if (catalogueIsPublicAuthorizationResult.Succeeded || authorizationResult.Succeeded)
                 return Ok(response);
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [Route("Catalogue/{id}")]
@@ -64,7 +64,7 @@ namespace FlowerForestAPI.Controllers
             if (catalogueIsPublicAuthorizationResult.Succeeded || authorizationResult.Succeeded)
                 return Ok(plantRepository.GetPlantsByCatalogueId(id));
 
-            return new ForbidResult();
+            return NotFound();
         }
 
         [HttpPost]

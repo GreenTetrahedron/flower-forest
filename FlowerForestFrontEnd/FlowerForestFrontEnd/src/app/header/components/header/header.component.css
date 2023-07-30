@@ -1,0 +1,32 @@
+.logo-showcase {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+    justify-items: center;
+    align-items: center;
+}
+
+.header {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    background-color: #07020D;
+    color: #F0F7F4;
+    height: 70px;
+}
+
+.title--logo-showcase {
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.navigation {
+    display: grid;
+    justify-items: right;
+    align-items: center;
+}
+
+.user-navigation-links {
+    padding-right: 5px;
+}

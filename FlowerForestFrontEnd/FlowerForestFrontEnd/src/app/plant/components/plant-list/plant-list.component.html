@@ -1,10 +1,21 @@
-<div *ngIf="plants != undefined && plants.length > 0">
-    <ul>
-        <li *ngFor="let plant of plants">
-            <h2>{{plant.commonName}}</h2>
-            <i>{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</i>
-            <img src="{{plant.photoUrl}}" />
-            <button *ngIf="onViewDo != undefined" (click)="onViewDo(plant.id)">View details</button>
+<div class="plant-list-container" *ngIf="plants != undefined && plants.length > 0">
+    <ul class="plant-list">
+        <li class="plant-card" *ngFor="let plant of plants">
+            <div class="plant-card-top">
+                <div class="plant-card-top-section">
+                    <div class="plant-card-image-container">
+                        <img class="plant-card-image" src="{{plant.photoUrl}}" />
+                    </div>
+                    <div class="plant-card-image-filler"></div>
+                </div>
+                <div class="plant-card-image-gradient">
+                </div>
+            </div>
+            <div class="plant-card-content-container">
+                <h2 class="plant-card-name">{{(plant.commonName != undefined && plant.commonName.length > 0 ? plant.commonName : (plant.genus | titlecase) + " " + (plant.species | lowercase))}}</h2>
+                <i class="plant-card-binomial-name" *ngIf="plant.commonName != undefined && plant.commonName.length > 0">{{(plant.genus | titlecase) + " " + (plant.species | lowercase)}}</i>
+                <button class="button plant-card-view-plant-button" *ngIf="onViewDo != undefined" (click)="onViewDo(plant.id)">View plant</button>
+            </div>
         </li>
     </ul>
 </div>

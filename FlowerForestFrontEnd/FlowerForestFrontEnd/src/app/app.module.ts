@@ -4,8 +4,7 @@ import { HeaderModule } from './header/header.module';
 
 import { ViewsModule } from './views/views.module';
 
-
-import { AppRoutingModule } from './routing/app-routing.module';
+import { ErrorPagesModule } from './error-pages/error-pages.module';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -29,10 +28,10 @@ import { CatchErrorInterceptorService } from './http-interceptors/services/catch
   imports: [
     BrowserModule,
     SharedModule,
-    AppRoutingModule,
     HeaderModule,
     UserModule,
     CatalogueModule,
+    ErrorPagesModule,
     ViewsModule
   ],
   providers: [

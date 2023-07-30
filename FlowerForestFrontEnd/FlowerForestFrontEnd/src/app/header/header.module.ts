@@ -1,23 +1,20 @@
-import { AppRoutingModule } from '../routing/app-routing.module';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './components/header/header.component';
-import { NavigationLinksComponent } from './components/navigation-links/navigation-links.component';
 import { UserLinksComponent } from './components/user-links/user-links.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    NavigationLinksComponent,
     HeaderComponent,
     UserLinksComponent
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    SharedModule
   ],
   exports: [
     HeaderComponent

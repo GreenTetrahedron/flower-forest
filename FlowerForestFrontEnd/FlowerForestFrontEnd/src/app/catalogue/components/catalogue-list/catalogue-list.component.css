@@ -1,0 +1,18 @@
+.catalogue-list {
+    display: flex;
+    gap: 10px;
+}
+
+.catalogue {
+    display: grid;
+    grid-template-rows: 1fr 35px;
+    min-width: 200px;
+    height: 100px;
+    background-color: #438472ff;
+    padding: 15px;
+    border-radius: 6px;
+    color: #F0F7F4;
+}
+.catalogue-name {
+    font-size: 25px;
+}

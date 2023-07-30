@@ -1,0 +1,21 @@
+.user-profile-container {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #9B5094;
+    display: flex;
+    text-align: center;
+}
+
+.user-profile-name {
+    flex: 1;    
+    color: #F0F7F4;
+    text-decoration: none;
+    line-height: 40px;
+    font-size: 25px;
+}
+
+.navigation-link {
+    text-decoration: none;
+    color: #F0F7F4;
+}

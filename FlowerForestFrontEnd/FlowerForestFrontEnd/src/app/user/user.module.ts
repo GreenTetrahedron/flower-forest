@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AuthenticateUserComponent } from './components/authenticate-user/authenticate-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 
@@ -15,7 +16,8 @@ import { AuthenticateUserComponent } from './components/authenticate-user/authen
   declarations: [
     UserDetailsComponent,
     AddUserComponent,
-    AuthenticateUserComponent
+    AuthenticateUserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,

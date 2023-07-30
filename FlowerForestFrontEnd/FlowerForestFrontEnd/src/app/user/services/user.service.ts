@@ -12,6 +12,8 @@ import { MessageResponse } from 'src/app/shared/models/message-response';
 
 import { User } from '../models/user';
 import { UserWithToken } from '../models/userWithToken';
+import { UserStorageService } from 'src/app/storage/services/user-storage/user-storage.service';
+import { TokenStorageService } from 'src/app/storage/services/token-storage/token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,7 @@ export class UserService {
     })
   };
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly tokenStorage: TokenStorageService, private readonly userStorage: UserStorageService, private readonly http: HttpClient) { }
 
   authenticateUser(username: string, password: string): Observable<AuthenticationResult> {
     return this.http
@@ -37,7 +39,8 @@ export class UserService {
           const authenticationSuccess: boolean = (response.message === "SUCCESS_AUTHENTICATION_VALIDCREDENTIALS");
           
           if (authenticationSuccess === true) {
-            localStorage.setItem("token", userWithToken.token);
+            this.tokenStorage.setToken(userWithToken.token);
+            this.userStorage.setUser(user);
           }
 
           return {
@@ -57,5 +60,10 @@ export class UserService {
           return user;
         })
       )
+  }
+
+  addUser(username: string, password: string): Observable<MessageResponse> {
+    return this.http
+      .post<MessageResponse>(this.requestUrl, {"username": username, "password": password}, this.httpOptions);
   }
 }

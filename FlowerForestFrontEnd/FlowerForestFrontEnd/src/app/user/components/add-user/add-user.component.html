@@ -1,1 +1,12 @@
-<p>add-user works!</p>
+<form class="form" [formGroup]="addUserForm" (ngSubmit)="submit()">
+    <app-form-error-message *ngIf="validCredentials === false" message="Incorrect username or password"></app-form-error-message>
+    <div class="form-field">
+        <label class="form-label" for="username">Username: </label>
+        <input class="form-text-input" id="username" type="text" formControlName="username" />
+    </div>
+    <div class="form-field">
+        <label class="form-label" for="password">Password: </label>
+        <input class="form-text-input" id="password" type="password" formControlName="password" />
+    </div>
+    <button class="button form-submit-button sign-in-button" type="submit">Sign in</button>
+</form>

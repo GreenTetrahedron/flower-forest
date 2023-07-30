@@ -1,12 +1,12 @@
-<form [formGroup]="authenticationForm" (ngSubmit)="submit()">
+<form class="form" [formGroup]="authenticationForm" (ngSubmit)="submit()">
     <app-form-error-message *ngIf="validCredentials === false" message="Incorrect username or password"></app-form-error-message>
-    <div>
-        <label for="username">Username: </label>
-        <input id="username" type="text" formControlName="username" />
+    <div class="form-field">
+        <label class="form-label" for="username">Username: </label>
+        <input class="form-text-input" id="username" type="text" formControlName="username" />
     </div>
-    <div>
-        <label for="password">Password: </label>
-        <input id="password" type="password" formControlName="password" />
+    <div class="form-field">
+        <label class="form-label" for="password">Password: </label>
+        <input class="form-text-input" id="password" type="password" formControlName="password" />
     </div>
-    <button type="submit">Sign in</button>
+    <button class="button form-submit-button sign-in-button" type="submit">Sign in</button>
 </form>

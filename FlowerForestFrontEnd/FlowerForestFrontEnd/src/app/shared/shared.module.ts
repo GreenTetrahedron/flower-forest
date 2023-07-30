@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ErrorMessagesModule } from '../error-messages/error-messages.module';
+import { StorageModule } from '../storage/storage.module';
 
 
 import { BackButtonComponent } from './components/back-button/back-button.component';
@@ -24,7 +25,8 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     ErrorMessagesModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StorageModule
   ]
 })
 export class SharedModule { }

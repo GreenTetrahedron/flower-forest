@@ -1,0 +1,12 @@
+.catalogue-name {
+    font-size: 37px;
+}
+.catalogue-details-container {
+    display: grid;
+    padding: 25px;
+    gap: 15px;
+}
+.catalogue-user-name {
+    font-size: 14px;
+    color: #41354f;
+}
