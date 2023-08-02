@@ -24,10 +24,8 @@ export class UserDashboardComponent implements OnInit {
   selectedCatalogue?: Catalogue;
 
   addingCatalogue: boolean = false;
-  editingCatalogue: boolean = false;
 
-  @ViewChild("addCatalogueComponent", { static: true }) addCatalogueComponent?: AddCatalogueComponent;
-  @ViewChild("editCatalogueComponent", { static: false }) editCatalogueComponent?: EditCatalogueComponent;
+  @ViewChild("addCatalogueComponent", { static: false }) addCatalogueComponent?: AddCatalogueComponent;
   @ViewChild("catalogueListComponent", { static: true }) catalogueListComponent?: CatalogueListComponent;
 
 
@@ -49,7 +47,7 @@ export class UserDashboardComponent implements OnInit {
     }
 
     this.catalogueListComponent.catalogues?.push(this.addCatalogueComponent.catalogue!);
-    this.addingCatalogue = false;
+    this.hideAddCatalogue();
   }
 
   onViewingCatalogueDetails(catalogueId: string) {
@@ -61,18 +59,6 @@ export class UserDashboardComponent implements OnInit {
         }
       });
     
-  }
-
-  onEditingCatalogue() {
-    if (this.catalogueListComponent == undefined || this.editCatalogueComponent == undefined ||
-      this.catalogueListComponent.catalogues == undefined || this.editCatalogueComponent.catalogue == undefined) {
-      return;
-    }
-
-    const indexToChange = this.catalogueListComponent.catalogues.findIndex(c => c.id == this.selectedCatalogue?.id);
-    this.catalogueListComponent.catalogues[indexToChange] = this.editCatalogueComponent.catalogue;
-
-    this.editingCatalogue = false;
   }
 
 
@@ -91,6 +77,8 @@ export class UserDashboardComponent implements OnInit {
 
   displayAddCatalogueForm() {
     this.addingCatalogue = true;
-    this.editingCatalogue = false;
+  }
+  hideAddCatalogue() {
+    this.addingCatalogue = false;
   }
 }

@@ -89,7 +89,6 @@ export class EditCatalogueComponent implements OnInit {
         if ((response.message.startsWith("SUCCESS")) == true) {
           this.buttonText = "Saved";
           if (this.onSubmitDo != undefined) {
-            console.log(this.catalogue);
             this.onSubmitDo();
           }
         }

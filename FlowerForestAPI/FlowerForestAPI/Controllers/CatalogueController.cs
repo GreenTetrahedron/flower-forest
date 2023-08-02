@@ -67,12 +67,20 @@ namespace FlowerForestAPI.Controllers
 
         [Route("{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetCatalogueById([FromRoute] Guid id)
         {
-            var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, id);
-            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, id);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(id);
 
-            if (publicCatalogueAuthorizationResult.Succeeded || authorizationResult.Succeeded)
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return Ok(catalogueRepository.GetCatalogueById(id));
+
+            if (User.Claims.Count() == 0)
+                return Unauthorized();
+
+            var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, id);
+
+            if (authorizationResult.Succeeded)
                 return Ok(catalogueRepository.GetCatalogueById(id));
 
             return NotFound();
@@ -82,7 +90,7 @@ namespace FlowerForestAPI.Controllers
         public async Task<IActionResult> UpdateCatalogue([FromBody] Catalogue catalogue)
         {
             var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
-            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, catalogue.Id);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(catalogue.Id);
 
             if (authorizationResult.Succeeded)
                 return Ok(catalogueRepository.UpdateCatalogue(catalogue));
@@ -97,7 +105,7 @@ namespace FlowerForestAPI.Controllers
         public async Task<IActionResult> DeleteCatalogue([FromBody] Catalogue catalogue)
         {
             var authorizationResult = await authorizeUserService.AuthorizeUserId(User, catalogue.UserId);
-            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, catalogue.Id);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(catalogue.Id);
 
             if (authorizationResult.Succeeded)
                 return Ok(catalogueRepository.DeleteCatalogue(catalogue));

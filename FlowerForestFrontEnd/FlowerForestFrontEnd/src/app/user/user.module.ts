@@ -27,7 +27,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
   exports: [
     UserDetailsComponent,
     AddUserComponent,
-    AuthenticateUserComponent
+    AuthenticateUserComponent,
+    EditUserComponent
   ]
 })
 export class UserModule { }

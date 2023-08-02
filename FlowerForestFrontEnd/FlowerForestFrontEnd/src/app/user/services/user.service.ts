@@ -66,4 +66,9 @@ export class UserService {
     return this.http
       .post<MessageResponse>(this.requestUrl, {"username": username, "password": password}, this.httpOptions);
   }
+
+  editUser(id: string, username: string, password: string): Observable<MessageResponse> {
+    return this.http
+      .put<MessageResponse>(this.requestUrl, {"id": id, "username": username, "password": password}, this.httpOptions);
+  }
 }

@@ -14,9 +14,6 @@ import { UserService } from 'src/app/user/services/user.service';
   styleUrls: ['./catalogue-details.component.css']
 })
 export class CatalogueDetailsComponent implements OnInit {
-  userId?: string;
-  user?: User;
-
   catalogue?: Catalogue;
   plants?: Plant[];
 
@@ -37,8 +34,6 @@ export class CatalogueDetailsComponent implements OnInit {
       .subscribe({
         next: (catalogue: Catalogue) => {
           this.getPlants(catalogue.id);
-          this.userId = catalogue.userId;
-          this.getUser(this.userId);
         }
     });
   }
@@ -56,6 +51,10 @@ export class CatalogueDetailsComponent implements OnInit {
 
 
   onClosePlantDetails() {
+    this.hidePlantDetails();
+  }
+
+  hidePlantDetails() {
     this.viewingPlant = false;
   }
 
@@ -71,15 +70,6 @@ export class CatalogueDetailsComponent implements OnInit {
     });
 
     return response;
-  }
-
-  getUser(userId: string) {
-    this.userService.getUserDetailsById(userId)
-      .subscribe({
-        next: (user: User) => {
-          this.user = user;
-        }
-      });
   }
 
   getPlants(catalogueId: string) {

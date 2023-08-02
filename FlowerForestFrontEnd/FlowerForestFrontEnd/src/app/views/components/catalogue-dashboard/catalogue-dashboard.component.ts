@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { EditCatalogueComponent } from 'src/app/catalogue/components/edit-catalogue/edit-catalogue.component';
 import { Catalogue } from 'src/app/catalogue/models/catalogue';
 import { CatalogueService } from 'src/app/catalogue/services/catalogue.service';
 import { AddPlantComponent } from 'src/app/plant/components/add-plant/add-plant.component';
@@ -7,6 +9,9 @@ import { EditPlantComponent } from 'src/app/plant/components/edit-plant/edit-pla
 import { PlantListComponent } from 'src/app/plant/components/plant-list/plant-list.component';
 import { Plant } from 'src/app/plant/models/plant';
 import { PlantService } from 'src/app/plant/services/plant.service';
+import { UserStorageService } from 'src/app/storage/services/user-storage/user-storage.service';
+import { User } from 'src/app/user/models/user';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-catalogue-dashboard',
@@ -14,6 +19,8 @@ import { PlantService } from 'src/app/plant/services/plant.service';
   styleUrls: ['./catalogue-dashboard.component.css']
 })
 export class CatalogueDashboardComponent {
+  user?: User;
+
   catalogueId?: string;
   catalogue?: Catalogue;
 
@@ -24,31 +31,51 @@ export class CatalogueDashboardComponent {
   addingPlant: boolean = false;
   editingPlant: boolean = false;
 
+  authorized: boolean = false;
+
   @ViewChild("plantListComponent", { static: false }) plantListComponent?: PlantListComponent;
   @ViewChild("addPlantComponent", { static: false }) addPlantComponent?: AddPlantComponent;
   @ViewChild("editPlantComponent", { static: false }) editPlantComponent?: EditPlantComponent;
+  @ViewChild("editCatalogueComponent", { static: true }) editCatalogueComponent?: EditCatalogueComponent;
 
 
   constructor(private route: ActivatedRoute, private router: Router,
-    private readonly catalogueService: CatalogueService, private readonly plantService: PlantService) { }
+    private readonly catalogueService: CatalogueService, private readonly plantService: PlantService,
+    private readonly userService: UserService) { }
 
   ngOnInit() {
-    this.getCatalogue();
+    this.getCatalogue()
+      .subscribe({
+        next: (catalogue: Catalogue) => {
+          this.getUser(catalogue.userId);
+        }
+      });
 
     if (this.catalogueId != undefined) {
       this.getPlants(this.catalogueId);
     }
   }
 
-  getCatalogue() {
+  getUser(userId: string) {
+    this.userService.getUserDetailsById(userId)
+      .subscribe({
+        next: (user: User) => {
+          this.user = user;
+        }
+      });
+  }
+
+  getCatalogue(): Observable<Catalogue> {
     this.catalogueId = String(this.route.snapshot.paramMap.get("catalogueId"));
 
-    this.catalogueService.getCatalogueById(this.catalogueId)
-      .subscribe({
+    var response = this.catalogueService.getCatalogueById(this.catalogueId)
+    response.subscribe({
         next: (catalogue: Catalogue) => {
           this.catalogue = catalogue;
         }
       });
+    
+    return response;
   }
 
   getPlants(catalogueId: string) {
@@ -117,13 +144,32 @@ export class CatalogueDashboardComponent {
     this.editingPlant = false;
   }
 
+  onEditingCatalogue() {
+    if (this.editCatalogueComponent == undefined) {
+      console.log(this.editCatalogueComponent);
+      return;
+    }
+
+    this.catalogue = this.editCatalogueComponent!.catalogue;
+    this.editCatalogueComponent!.onInit();
+  }
+
+
   displayAddPlantForm() {
     this.addingPlant = true;
     this.editingPlant = false;
   }
 
+  hideAddPlant() {
+    this.addingPlant = false;
+  }
+
   displayEditPlantForm() {
     this.editingPlant = true;
     this.addingPlant = false;
+  }
+  
+  hideEditPlant() {
+    this.editingPlant = false;
   }
 }

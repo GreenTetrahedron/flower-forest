@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/storage/services/token-storage/token-storage.service';
 import { UserStorageService } from 'src/app/storage/services/user-storage/user-storage.service';
 import { User } from 'src/app/user/models/user';
 
@@ -7,13 +9,14 @@ import { User } from 'src/app/user/models/user';
   templateUrl: './user-links.component.html',
   styleUrls: ['./user-links.component.css']
 })
-export class UserLinksComponent implements OnInit{
+export class UserLinksComponent implements OnInit {
   user?: User = this.userStorage.getUser();
-  
+
   signedIn: boolean = this.user != undefined;
 
 
-  constructor(private readonly userStorage: UserStorageService) {}
+  constructor(private readonly userStorage: UserStorageService, private readonly tokenStorage: TokenStorageService,
+    private readonly router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -27,6 +30,15 @@ export class UserLinksComponent implements OnInit{
           this.signedIn = user != undefined;
         }
       })
+  }
+
+  logout() {
+    this.userStorage.clearUser();
+    this.tokenStorage.clearToken();
+
+    const url = this.router.url;
+    this.router.navigateByUrl("/", { skipLocationChange: true })
+      .then(() => { this.router.navigateByUrl(url) });
   }
 
 }

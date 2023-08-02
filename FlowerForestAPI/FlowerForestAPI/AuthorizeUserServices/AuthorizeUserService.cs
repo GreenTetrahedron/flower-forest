@@ -42,7 +42,7 @@ namespace FlowerForestAPI.AuthorizeUserServices
             return await AuthorizeUserId(claims, userId);
         }
 
-        public async Task<AuthorizationResult> AuthorizePublicCatalogueById(ClaimsPrincipal claims, Guid catalogueId)
+        public async Task<AuthorizationResult> AuthorizePublicCatalogueById(Guid catalogueId)
         {
             var response = catalogueRepository.GetColumnByCatalogueId(nameof(Catalogue.IsPublic), catalogueId);
 

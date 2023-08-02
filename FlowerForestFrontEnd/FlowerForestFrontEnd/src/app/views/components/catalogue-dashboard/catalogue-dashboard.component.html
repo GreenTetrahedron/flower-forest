@@ -1,5 +1,34 @@
-<app-edit-catalogue [catalogueId]="catalogueId!"></app-edit-catalogue>
-<button (click)="displayAddPlantForm()">Add Plant</button>
-<app-plant-list #plantListComponent [plants]="plants" [onViewDo]="onViewingPlant.bind(this)"></app-plant-list>
-<app-add-plant #addPlantComponent [hidden]="!addingPlant" [onSubmitDo]="onAddingPlant.bind(this)" [catalogueId]="catalogueId!"></app-add-plant>
-<app-edit-plant #editPlantComponent *ngIf="selectedPlant != undefined" [hidden]="!editingPlant" [onDeleteDo]="onDeletingPlant.bind(this)" [onSubmitDo]="onEditingPlant.bind(this)" [catalogueId]="catalogueId!" [plantId]="selectedPlant.id"></app-edit-plant>
+<div class="container catalogue-dashboard-container">
+    <div *ngIf="catalogue != undefined" class="thin-form-container title-content-container">
+        <h2 class="title">{{(catalogue!.name[catalogue!.name.length - 1] == 's'? catalogue!.name + "'" : catalogue!.name
+            + "'s")}} details</h2>
+        <app-edit-catalogue #editCatalogueComponent [onSubmitDo]="onEditingCatalogue.bind(this)"
+            [catalogueId]="catalogueId!"></app-edit-catalogue>
+    </div>
+    <div class="catalogue-dashboard-top-bar">
+        <h2 class="title">Plants in {{catalogue?.name}}</h2>
+        <button class="button show-add-plant-form-button" (click)="displayAddPlantForm()">Add Plant</button>
+    </div>
+    <app-plant-list #plantListComponent [plants]="plants" [onViewDo]="onViewingPlant.bind(this)"></app-plant-list>
+    <div *ngIf="addingPlant" class="pop-up-container full-screen-pop-up-container">
+        <div class="pop-up full-screen-pop-up">
+            <div class="form-pop-up">
+                <h2 class="title">Add Plant</h2>
+                <button class="pop-up-close-button" (click)="hideAddPlant()"></button>
+                <app-add-plant #addPlantComponent [hidden]="!addingPlant" [onSubmitDo]="onAddingPlant.bind(this)"
+                    [catalogueId]="catalogueId!"></app-add-plant>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="editingPlant" class="pop-up-container full-screen-pop-up-container">
+        <div class="pop-up full-screen-pop-up">
+            <div class="form-pop-up">
+                <h2 class="title">Edit Plant</h2>
+                <button class="pop-up-close-button" (click)="hideEditPlant()"></button>
+                <app-edit-plant #editPlantComponent *ngIf="selectedPlant != undefined" [hidden]="!editingPlant"
+                    [onDeleteDo]="onDeletingPlant.bind(this)" [onSubmitDo]="onEditingPlant.bind(this)"
+                    [catalogueId]="catalogueId!" [plantId]="selectedPlant.id"></app-edit-plant>
+            </div>
+        </div>
+    </div>
+</div>

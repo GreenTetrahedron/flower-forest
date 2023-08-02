@@ -15,6 +15,7 @@ import { CatalogueDashboardComponent } from './components/catalogue-dashboard/ca
 import { HomeComponent } from './components/home/home.component';
 import { CatalogueDetailsComponent } from './components/catalogue-details/catalogue-details.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 
 
@@ -24,7 +25,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     CatalogueDashboardComponent,
     HomeComponent,
     CatalogueDetailsComponent,
-    SignInComponent
+    SignInComponent,
+    RegisterUserComponent
   ],
   imports: [
     CommonModule,

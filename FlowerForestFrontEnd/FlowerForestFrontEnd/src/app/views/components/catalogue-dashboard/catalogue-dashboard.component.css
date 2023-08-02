@@ -1,0 +1,21 @@
+
+.catalogue-dashboard-container {
+    display: grid;
+    gap: 25px;
+    padding: 25px;
+}
+
+.catalogue-dashboard-top-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.show-add-plant-form-button {
+    width: 200px;
+    height: 42px;
+    background-color: var(--primary);
+    color: var(--white);
+}
+.show-add-plant-form-button:hover {
+    background-color: var(--secondary);
+}

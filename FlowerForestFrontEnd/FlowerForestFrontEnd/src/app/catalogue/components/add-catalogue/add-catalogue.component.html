@@ -1,8 +1,7 @@
-<h2>Add Catalouge</h2>
-<form [formGroup]="catalogueDetails" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="name">Name: </label>
-        <input formControlName="name" id="name" />
+<form class="form" [formGroup]="catalogueDetails" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+        <label class="form-name" for="name">Name: </label>
+        <input class="form-text-input" formControlName="name" id="name" />
     </div>
-    <button type="submit">{{buttonText}}</button>
+    <button class="button form-submit-button" type="submit">{{buttonText}}</button>
 </form>

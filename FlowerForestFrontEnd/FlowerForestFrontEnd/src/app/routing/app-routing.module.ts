@@ -3,9 +3,10 @@ import { CatalogueDashboardComponent } from '../views/components/catalogue-dashb
 import { CatalogueDetailsComponent } from '../views/components/catalogue-details/catalogue-details.component';
 import { NotFoundComponent } from '../error-pages/components/not-found/not-found.component';
 import { HomeComponent } from '../views/components/home/home.component';
+import { SignInComponent } from '../views/components/sign-in/sign-in.component';
+import { RegisterUserComponent } from '../views/components/register-user/register-user.component';
 
 import { UnauthorizedComponent } from '../error-pages/components/unauthorized/unauthorized.component';
-import { SignInComponent } from '../views/components/sign-in/sign-in.component';
 import { ForbiddenComponent } from '../error-pages/components/forbidden/forbidden.component';
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "user/:id", component: UserDashboardComponent },
   { path: "catalogue/:id", component: CatalogueDetailsComponent },
   { path: "sign-in", component: SignInComponent },
+  { path: "register", component: RegisterUserComponent },
   { path: "home", component: HomeComponent },
   { path: "unauthorized", component: UnauthorizedComponent },
   { path: "forbidden", component: ForbiddenComponent },

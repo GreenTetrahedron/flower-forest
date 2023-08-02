@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666664 8.4666667"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="close-cross.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect27981"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="26.25"
+     inkscape:cx="14.914286"
+     inkscape:cy="15.847619"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     width="1080px"
+     inkscape:showpageshadow="false"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:window-width="1920"
+     inkscape:window-height="1046"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -315.75245,-175.22558 c 3.58384,5.65341 7.1675,11.30652 10.75095,16.95932"
+       id="path27979"
+       inkscape:path-effect="#path-effect27981"
+       inkscape:original-d="m -315.75245,-175.22558 c 3.58391,5.65337 7.16756,11.30648 10.75095,16.95932" />
+    <rect
+       style="fill:#d4d3dc;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;paint-order:stroke markers fill;stop-color:#000000;fill-opacity:1"
+       id="rect30242"
+       width="11.701631"
+       height="0.65473408"
+       x="0.13602205"
+       y="-0.32736716"
+       ry="0.32736704"
+       transform="rotate(45.000001)" />
+    <rect
+       style="fill:#d4d3dc;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:square;paint-order:stroke markers fill;stop-color:#000000;fill-opacity:1"
+       id="rect30453"
+       width="11.701631"
+       height="0.65473408"
+       x="-5.8508153"
+       y="-6.3142042"
+       ry="0.32736704"
+       transform="rotate(135)" />
+  </g>
+</svg>

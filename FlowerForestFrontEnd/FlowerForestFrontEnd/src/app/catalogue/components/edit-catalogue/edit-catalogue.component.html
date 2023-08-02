@@ -1,15 +1,15 @@
-<form [formGroup]="editCatalogueFormGroup" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="name">Name</label>
-        <input id="name" formControlName="name"/>
+<form class="form" [formGroup]="editCatalogueFormGroup" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-text-input" id="name" formControlName="name"/>
     </div>
-    <div>
-        <label>Select privacy</label>
-        <select formControlName="privacyOption">
+    <div class="form-field">
+        <label class="form-label">Select privacy</label>
+        <select class="form-dropdown-input" formControlName="privacyOption">
             <option *ngFor="let privacyOption of privacyOptions" [ngValue]="privacyOption">
                 {{privacyOption | titlecase}}
             </option>
         </select>
     </div>
-    <button type="submit">{{buttonText}}</button>
+    <button class="button form-submit-button" type="submit">{{buttonText}}</button>
 </form>

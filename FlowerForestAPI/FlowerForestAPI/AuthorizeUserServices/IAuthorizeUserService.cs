@@ -13,6 +13,6 @@ namespace FlowerForestAPI.AuthorizeUserServices
 
         Task<AuthorizationResult> AuthorizeCatalogueUserId(ClaimsPrincipal claims, Guid catalogueId);
 
-        Task<AuthorizationResult> AuthorizePublicCatalogueById(ClaimsPrincipal claims, Guid catalogueId);
+        Task<AuthorizationResult> AuthorizePublicCatalogueById(Guid catalogueId);
     }
 }

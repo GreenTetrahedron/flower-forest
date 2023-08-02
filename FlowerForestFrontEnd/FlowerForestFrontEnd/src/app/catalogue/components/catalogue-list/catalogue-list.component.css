@@ -1,18 +1,27 @@
 .catalogue-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
 .catalogue {
+    flex: 1;
     display: grid;
     grid-template-rows: 1fr 35px;
     min-width: 200px;
+    max-width: 400px;
     height: 100px;
-    background-color: #438472ff;
+    background-color: #f5f4f8;
     padding: 15px;
     border-radius: 6px;
-    color: #F0F7F4;
 }
 .catalogue-name {
-    font-size: 25px;
+    font-size: 20px;
+}
+.view-catalogue-button {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+.view-catalogue-button:hover {
+    background-color: var(--primary);
 }

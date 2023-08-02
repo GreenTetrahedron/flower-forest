@@ -48,6 +48,14 @@ table {
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+:root {
+    --white: #fff;
+    --gray: #e0e0e6ff;
+    --black: #09080d;
+    --primary: #7765e3;
+    --secondary: #9385e9;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -55,25 +63,27 @@ table {
 body {
     font-family: 'Roboto', sans-serif;
     overflow-x: none;
-    color: #07020D;
+    color: var(--black);
+    background-color: var(--white);
 }
 
 .button {
-    background-color: #F0F7F4;
+    background-color: var(--primary);
     border-radius: 4px;
     border: none;
-    color: #29173e;
+    color: var(--white);
 }
 .button:hover {
+    cursor: pointer;
     transition: ease-in 0.15s;
-    background-color: #ddc5f7;
+    background-color: var(--secondary);
 }
 
 .form {
     display: grid;
     grid-auto-flow: row;
     gap: 15px;
-    color: #37323D;
+    color: var(--black);
     font-size: 17px;
 }
 .form-field {
@@ -86,16 +96,33 @@ body {
     font-size: 17px;
 }
 .form-text-input {
-    border: 1px solid #dbe2df;
+    border: 1px solid var(--gray);
     border-radius: 4px;
+    padding: 0 12px;
 }
+.form-dropdown-input {
+    border: none;
+    border-radius: 4px;
+    padding: 0 12px;
+    border-right: 12px solid transparent;
+}
+.form-dropdown-input:hover {
+    cursor: pointer;
+}
+
 .form-submit-button {
-    height: 43px;
+    background-color: var(--primary);
+    color: var(--white);
+    height: 42px;
 }
+.form-submit-button:hover {
+    background-color: var(--secondary);
+}
+
 .form-link {
     text-align: center;
     font-size: 14px;
-    color: #7765E3;
+    color: var(--secondary);
 }
 
 .invisible-link {
@@ -109,4 +136,108 @@ body {
 
 .container {
     padding: 20px;
+    position: relative;
+}
+
+.pop-up-container {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    max-height: calc(100vh - 70px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;    
+}
+.pop-up {
+    position: relative;
+    flex: 1;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    border: var(--gray) 1px solid;
+}
+
+.pop-up-close-button {
+    background: none;
+    background-image: url('../src/assets/images/icons/ui/close-cross.svg');
+    background-size: contain;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 25px;
+    aspect-ratio: 1/1;
+    border: none;
+}
+.pop-up-close-button:hover {
+    cursor: pointer;
+}
+
+.full-screen-pop-up-container {
+    min-height: calc(100vh - 70px);
+}
+.full-screen-pop-up {
+    margin: 20px 100px;
+    height: max-content;
+}
+
+.form-pop-up {
+    padding: 50px 70px;
+    display: grid;
+    gap: 20px;
+}
+
+.vertical-split-card {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 14px;
+    background-color: #f3f2f8;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.card-left-side {
+    overflow: hidden;
+    text-align: center;
+}
+.card-right-side {
+    padding: 35px;
+    padding-right: 39px;
+}
+.form-container {
+    display: grid;
+    gap: 5px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 100px;
+    max-height: calc(100vh - 70px);
+}
+
+.thin-form-container {
+    max-width: 400px;
+}
+
+.title-content-container {
+    display: grid;
+    gap: 15px;
+}
+
+@media (max-width: 700px) {    
+    .vertical-split-card {
+        grid-template-columns: 1fr;
+    }
+    .card-left-side {
+        display: none;
+    }
+    .card-container {
+        padding: 20px;
+    }
+    .card-right-side {
+        padding-right: 35px;
+    }
 }

@@ -4,7 +4,21 @@
     </li>
 </ul>
 <ul *ngIf="signedIn">
-    <li class="user-profile-container">
-        <a routerLink="/user/{{user!.id}}" class="user-profile-name">{{user!.username[0]}}</a>
+    <li>
+        <div class="dropdown">
+            <button class="user-profile-container dropdown-trigger">
+                <p class="user-profile-name dropdown-label">{{user!.username[0]}}</p>
+            </button>
+            <div class="dropdown-content">
+                <ul class="dropdown-link-list">
+                    <li class="dropdown-item">
+                        <a class="dropdown-item-content" routerLink="/user/{{user!.id}}">User dashboard</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <button class="dropdown-item-content logout-button" (click)="logout()">Log out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </li>
 </ul>

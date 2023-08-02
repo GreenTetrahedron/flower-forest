@@ -10,3 +10,36 @@
     font-size: 14px;
     color: #41354f;
 }
+
+.plant-details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    padding: 25px;
+    gap: 15px;
+}
+.plant-details-text {
+    display: grid;
+    gap: 5px;
+}
+.plant-binomial-name {
+    font-style: italic;
+    padding-bottom: 5px;
+}
+.plant-details-field {
+    font-size: 20px;
+}
+
+.plant-details-image {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .plant-details {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        justify-items: stretch;
+    }
+}

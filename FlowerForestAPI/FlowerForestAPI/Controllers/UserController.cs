@@ -38,7 +38,7 @@ namespace FlowerForestAPI.Controllers
 
         [Route("{id}")]
         [HttpGet]
-        public async Task<IActionResult> GetUserByIdAsync([FromRoute] Guid id)
+        public async Task<IActionResult> GetUserById([FromRoute] Guid id)
         {
             var authorizationResult = await authorizeUserService.AuthorizeUserId(User, id);
 

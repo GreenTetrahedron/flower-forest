@@ -1,23 +1,23 @@
-<form [formGroup]="addPlantFormGroup" (ngSubmit)="submit()">
-    <div>
-        <label for="commonName">Common name: </label>
-        <input formControlName="commonName" id="commonName" />
+<form class="form" [formGroup]="addPlantFormGroup" (ngSubmit)="submit()">
+    <div class="form-field">
+        <label class="form-label" for="commonName">Common name: </label>
+        <input class="form-text-input" formControlName="commonName" id="commonName" />
     </div>
-    <div>
-        <label for="genus">Genus: </label>
-        <input formControlName="genus" id="genus" />
+    <div class="form-field">
+        <label class="form-label" for="genus">Genus: </label>
+        <input class="form-text-input" formControlName="genus" id="genus" />
     </div>
-    <div>
-        <label for="species">Species: </label>
-        <input formControlName="species" id="species" />
+    <div class="form-field">
+        <label class="form-label" for="species">Species: </label>
+        <input class="form-text-input" formControlName="species" id="species" />
     </div>
-    <div>
-        <label for="maxHeight_metres">Max height (metres): </label>
-        <input formControlName="maxHeight_metres" id="maxHeight_metres" />
+    <div class="form-field">
+        <label class="form-label" for="maxHeight_metres">Max height (metres): </label>
+        <input class="form-text-input" formControlName="maxHeight_metres" id="maxHeight_metres" />
     </div>
-    <div>
-        <label for="photoUrl">Photo url: </label>
-        <input formControlName="photoUrl" id="photoUrl" />
+    <div class="form-field">
+        <label class="form-label" for="photoUrl">Photo url: </label>
+        <input class="form-text-input" formControlName="photoUrl" id="photoUrl" />
     </div>
-    <button type="submit">Add</button>
+    <button class="button form-submit-button" type="submit">Add</button>
 </form>

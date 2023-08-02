@@ -40,15 +40,23 @@ namespace FlowerForestAPI.Controllers
 
         [Route("{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetPlantById(Guid id)
         {
             var response = plantRepository.GetPlantById(id);
             var plant = (PlantDTO)(response.Data);
 
-            var catalogueIsPublicAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, plant.CatalogueId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(plant.CatalogueId);
+
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return Ok(response);
+
+            if (User.Claims.Count() == 0)
+                return Unauthorized();
+
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, plant.CatalogueId);
 
-            if (catalogueIsPublicAuthorizationResult.Succeeded || authorizationResult.Succeeded)
+            if (authorizationResult.Succeeded)
                 return Ok(response);
 
             return NotFound();
@@ -56,12 +64,20 @@ namespace FlowerForestAPI.Controllers
 
         [Route("Catalogue/{id}")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetPlantsByCatalogueId([FromRoute] Guid id)
         {
-            var catalogueIsPublicAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, id);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(id);
+
+            if (publicCatalogueAuthorizationResult.Succeeded)
+                return Ok(plantRepository.GetPlantsByCatalogueId(id));
+
+            if (User.Claims.Count() == 0)
+                return Unauthorized();
+
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, id);
 
-            if (catalogueIsPublicAuthorizationResult.Succeeded || authorizationResult.Succeeded)
+            if (authorizationResult.Succeeded)
                 return Ok(plantRepository.GetPlantsByCatalogueId(id));
 
             return NotFound();
@@ -82,7 +98,7 @@ namespace FlowerForestAPI.Controllers
         public async Task<IActionResult> UpdatePlant([FromBody] Plant plant)
         {
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, plant.CatalogueId);
-            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, plant.CatalogueId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(plant.CatalogueId);
 
             if (authorizationResult.Succeeded)
                 return Ok(plantRepository.UpdatePlant(plant));
@@ -97,7 +113,7 @@ namespace FlowerForestAPI.Controllers
         public async Task<IActionResult> DeletePlant([FromBody] Plant plant)
         {
             var authorizationResult = await authorizeUserService.AuthorizeCatalogueUserId(User, plant.CatalogueId);
-            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(User, plant.CatalogueId);
+            var publicCatalogueAuthorizationResult = await authorizeUserService.AuthorizePublicCatalogueById(plant.CatalogueId);
 
             if (authorizationResult.Succeeded)
                 return Ok(plantRepository.DeletePlant(plant));

@@ -30,6 +30,7 @@ namespace FlowerForestAPI.Repositories.CatalogueRepositories
             {
                 Id = catalogue.Id,
                 Name = catalogue.Name,
+                IsPublic = catalogue.IsPublic,
                 UserId = catalogue.UserId
             };
         }

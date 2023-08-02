@@ -1,13 +1,23 @@
-<div class="catalogue-details-container" *ngIf="catalogue != undefined">
+<div class="container catalogue-details-container" *ngIf="catalogue != undefined">
     <div class="catalogue-details">
         <h2 class="catalogue-name">{{catalogue.name}}</h2>
-        <p class="catalogue-user-name" *ngIf="user != undefined">Created by: {{user.username}}</p>
     </div>
     <app-plant-list [plants]="plants" [onViewDo]="onViewingPlant.bind(this)"></app-plant-list>
-    <div *ngIf="selectedPlant != undefined" [hidden]="!viewingPlant">
-        <img [src]="selectedPlant!.photoUrl"/>
-        <p>{{selectedPlant!.commonName}}</p>
-        <i>{{(selectedPlant!.genus | titlecase) + " " + (selectedPlant!.species | lowercase)}}</i>
-        <p>{{selectedPlant!.maxHeight_metres}}</p>
+
+    <div *ngIf="selectedPlant != undefined && viewingPlant" class="pop-up-container full-screen-pop-up-container">
+        <div class="pop-up full-screen-pop-up">
+            <button class="pop-up-close-button" (click)="hidePlantDetails()"></button>
+            <div class="plant-details">
+                <img class="plant-details-image" [src]="selectedPlant!.photoUrl" />
+
+                <div class="plant-details-text">
+                    <p class="title">{{selectedPlant!.commonName}}</p>
+                    <i class="plant-binomial-name">{{(selectedPlant!.genus | titlecase) + " " + (selectedPlant!.species | lowercase)}}</i>
+                    <div class="plant-details-field">
+                        <span>Max Height (metres): </span>&nbsp;{{selectedPlant!.maxHeight_metres}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
