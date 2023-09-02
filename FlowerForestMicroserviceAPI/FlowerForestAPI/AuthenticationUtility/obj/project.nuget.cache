@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "4qkIfn/LRcSDcHMkridhoSdSMsfWNhj1CDumdRFbOS8NIvJGxE0f0cPoJAcQ++CB7J07zW49qE5SldQ1Emdh/Q==",
+  "success": true,
+  "projectFilePath": "C:\\__Kabushak\\_Programming\\_Applications\\Web Applications\\FlowerForest\\FlowerForestMicroserviceAPI\\FlowerForestAPI\\AuthenticationUtility\\AuthenticationUtility.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.21\\microsoft.aspnetcore.authentication.jwtbearer.6.0.21.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.10.0\\microsoft.identitymodel.jsonwebtokens.6.10.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.identitymodel.logging\\6.10.0\\microsoft.identitymodel.logging.6.10.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.10.0\\system.identitymodel.tokens.jwt.6.10.0.nupkg.sha512",
+    "C:\\Users\\mania_reffff8\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -14,7 +14,7 @@ import { MessageResponse } from 'src/app/shared/models/message-response';
   providedIn: 'root'
 })
 export class PlantService {
-  private readonly requestUrl: string = "https://localhost:44375/api/Plant";
+  private readonly requestUrl: string = "https://localhost:5000/gateway/plant";
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"

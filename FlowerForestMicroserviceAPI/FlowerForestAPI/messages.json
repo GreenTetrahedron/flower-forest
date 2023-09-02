@@ -1,0 +1,67 @@
+[
+  {
+    "Type": "Success",
+    "Request": "Get",
+    "Description": "Retrieved"
+  },
+  {
+    "Type": "Information",
+    "Request": "Get",
+    "Description": "Not found"
+  },
+  {
+    "Type": "Error",
+    "Request": "Get",
+    "Description": "Error occurred"
+  },
+  {
+    "Type": "Success",
+    "Request": "Put",
+    "Description": "Updated"
+  },
+  {
+    "Type": "Information",
+    "Request": "Put",
+    "Description": "Invalid data"
+  },
+  {
+    "Type": "Error",
+    "Request": "Put",
+    "Description": "Error occurred"
+  },
+  {
+    "Type": "Success",
+    "Request": "Post",
+    "Description": "Added"
+  },
+  {
+    "Type": "Information",
+    "Request": "Post",
+    "Description": "Invalid data"
+  },
+  {
+    "Type": "Error",
+    "Request": "Post",
+    "Description": "Error occurred"
+  },
+  {
+    "Type": "Success",
+    "Request": "Delete",
+    "Description": "Deleted"
+  },
+  {
+    "Type": "Information",
+    "Request": "Delete",
+    "Description": "Not found"
+  },
+  {
+    "Type": "Information",
+    "Request": "Delete",
+    "Description": "Invalid data"
+  },
+  {
+    "Type": "Error",
+    "Request": "Delete",
+    "Description": "Error occurred"
+  }
+]

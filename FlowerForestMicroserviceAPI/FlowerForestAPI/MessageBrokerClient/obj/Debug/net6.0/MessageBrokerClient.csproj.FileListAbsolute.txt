@@ -1,0 +1,12 @@
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.csproj.AssemblyReference.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.AssemblyInfoInputs.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.AssemblyInfo.cs
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.csproj.CoreCompileInputs.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\bin\Debug\net6.0\MessageBrokerClient.deps.json
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\bin\Debug\net6.0\MessageBrokerClient.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\bin\Debug\net6.0\MessageBrokerClient.pdb
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\refint\MessageBrokerClient.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\MessageBrokerClient.pdb
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\MessageBrokerClient\obj\Debug\net6.0\ref\MessageBrokerClient.dll

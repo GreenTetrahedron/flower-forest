@@ -1,0 +1,12 @@
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.csproj.AssemblyReference.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.AssemblyInfoInputs.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.AssemblyInfo.cs
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.csproj.CoreCompileInputs.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\bin\Debug\net6.0\ResponseUtility.deps.json
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\bin\Debug\net6.0\ResponseUtility.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\bin\Debug\net6.0\ResponseUtility.pdb
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\refint\ResponseUtility.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ResponseUtility.pdb
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\ResponseUtility\obj\Debug\net6.0\ref\ResponseUtility.dll

@@ -13,7 +13,7 @@ import { MessageResponse } from 'src/app/shared/models/message-response';
   providedIn: 'root'
 })
 export class CatalogueService {
-  private readonly requestUrl: string = "https://localhost:44375/api/Catalogue";
+  private readonly requestUrl: string = "https://localhost:5000/gateway/catalogue";
   private httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"

@@ -1,0 +1,12 @@
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\bin\Debug\net6.0\IdentityUtility.deps.json
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\bin\Debug\net6.0\IdentityUtility.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\bin\Debug\net6.0\IdentityUtility.pdb
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.csproj.AssemblyReference.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.GeneratedMSBuildEditorConfig.editorconfig
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.AssemblyInfoInputs.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.AssemblyInfo.cs
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.csproj.CoreCompileInputs.cache
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\refint\IdentityUtility.dll
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\IdentityUtility.pdb
+C:\__Kabushak\_Programming\_Applications\Web Applications\FlowerForest\FlowerForestMicroserviceAPI\FlowerForestAPI\IdentityService\obj\Debug\net6.0\ref\IdentityUtility.dll

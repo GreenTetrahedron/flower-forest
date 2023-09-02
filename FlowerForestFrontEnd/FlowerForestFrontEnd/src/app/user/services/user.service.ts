@@ -20,7 +20,7 @@ import { TokenStorageService } from 'src/app/storage/services/token-storage/toke
 })
 export class UserService {
 
-  private readonly requestUrl: string = "https://localhost:44375/api/User";
+  private readonly requestUrl: string = "https://localhost:5000/gateway/user";
   private httpOptions = {
     headers: new HttpHeaders({ 
       "Content-Type": "application/json"
